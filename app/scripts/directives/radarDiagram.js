@@ -12,6 +12,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         equalPortions.push(100 / numCategories)
       });
 
+      
 
       var width = attrs.width,
         height = attrs.height,
@@ -41,11 +42,12 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .sort(null);
 
       var categoryPie = pie(equalPortions);
+      //debugger;
       var categoryArcs = {
         "Tools": categoryPie[0],
-        "Techniques": categoryPie[1],
+        "Techniques/Languages": categoryPie[1],
         "Platforms": categoryPie[2],
-        "Languages & Frameworks": categoryPie[3]
+        "Frameworks & Libraries": categoryPie[3]
       };
 
       var arc = d3.svg.arc();
@@ -138,7 +140,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .attr("stroke-width", "1px")
         .attr("stroke-opacity", ".25")
         .datum(function (d, i, j) {
-          var numRings = _.size(radarService.statuses);
+          var numRings = _.size(radarService.statuses) -2 ;
           d.arc = { innerRadius: getInnerRadius(diagramRadius, numRings, j),
             outerRadius: j == numRings - 1 ? diagramRadius : getInnerRadius(diagramRadius, numRings, j + 1)};
           _.extend(d.arc, categoryArcs[d.label]);

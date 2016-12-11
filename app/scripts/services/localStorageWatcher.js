@@ -13,7 +13,7 @@ angular.module('techRadarApp').factory('localStorageWatcher', [
         return storageObject;
       }, function () {
           /* Save changes to local storage */
-          return localStorage[storageKey] = JSON.stringify(storageObject);
+          return null; //localStorage[storageKey] = JSON.stringify(storageObject);
       /* Compare object for equality rather than for reference */
       }, true);
       return storageObject;

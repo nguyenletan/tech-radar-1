@@ -1,216 +1,229 @@
 angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'localStorageWatcher',
-  function($log, $timeout, localStorageWatcher) {
-
-    var LOCAL_STORAGE_ID = 'sadc.technologyRadarData';
-
-    function Radar(data) {
-      this.data = data ? data : [
-        {
-          label: "Core",
-          categories: [
-            { label: 'Tools', technologies: []},
-            { label: 'Techniques', technologies: []},
-            { label: 'Platforms', technologies: []},
-            { label: 'Languages & Frameworks', technologies: []},
-          ]
-        },
-        {
-          label: "Non-Core",
-          categories: [
-            { label: 'Tools', technologies: []},
-            { label: 'Techniques', technologies: []},
-            { label: 'Platforms', technologies: []},
-            { label: 'Languages & Frameworks', technologies: []},
-          ]
-        },
-        {
-          label: "Trend",
-          categories: [
-            { label: 'Tools', technologies: []},
-            { label: 'Techniques', technologies: []},
-            { label: 'Platforms', technologies: []},
-            { label: 'Languages & Frameworks', technologies: []},
-          ]
-        },
-      /*  {
-          label: "Future",
-          categories: [
-            { label: 'Tools', technologies: []},
-            { label: 'Techniques', technologies: []},
-            { label: 'Platforms', technologies: []},
-            { label: 'Languages & Frameworks', technologies: []},
-          ]
-        }*/
-      ];
-    }
-
-    Radar.prototype.getTechnologies = function() {
-      var categories = _.pluck(this.data, 'categories');
-      return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
-    };
-
-    var defaultData = [
-      {"label": "Core", "categories": [
-        {"label": "Tools", "technologies": [
-          {"label": "Infrastructure as code"},
-          {"label": "Embedded servlet containers"},
-          {"label": "Silverback"},
-          {"label": "AppCode"},
-          {"label": "Jasmine paired with Node.js"},
-          {"label": "Immutable servers"},
-          {"label": "Graphite"}
-        ]},
-        {"label": "Techniques", "technologies": [
-          {"label": "Health check pages"},
-          {"label": "Windows infrastructure automation"},
-          {"label": "Guerrilla user testing"},
-          {"label": "Work-in-Progress limits"},
-          {"label": "Automated deployment pipeline"},
-          {"label": "In process acceptance testing"},
-          {"label": "Advanced analytics"},
-          {"label": "Aggregates as documents"}
-        ]},
-        {"label": "Platforms", "technologies": [
-          {"label": "ATOM"},
-          {"label": "Care about hardware"},
-          {"label": "Mobile payment systems"},
-          {"label": "Neo4J"}
-        ]},
-        {"label": "Languages & Frameworks", "technologies": [
-          {"label": "ASP.NET MVC"},
-          {"label": ".NET "},
-          {"label": "Care about languages"},
-          {"label": "SASS, SCSS, LESS, and Stylus"}
-        ]}
-      ]},
-      {"label": "None-core", "categories": [
-        {"label": "Tools", "technologies": [
-          {"label": "Vagrant"},
-          {"label": "Gradle"},
-          {"label": "PSake"},
-          {"label": "Frank"},
-          {"label": "JavaScript micro frameworks"},
-          {"label": "Jade"},
-          {"label": "NuGet"},
-          {"label": "Highcharts"},
-          {"label": "D3"},
-          {"label": "Apache Pig"},
-          {"label": "SaaS performance testing tools"},
-          {"label": "Dependency Structure Matrices"},
-          {"label": "Locust"},
-          {"label": "Rake for Java & .Net"}
-        ]},
-        {"label": "Techniques", "technologies": [
-          {"label": "Polyglot Persistence"},
-          {"label": "Performance testing as a first-class citizen"},
-          {"label": "Out-of-container functional testing"},
-          {"label": "Micro-services"},
-          {"label": "Infrastructure automation of development workstations"},
-          {"label": "Agile analytics"},
-          {"label": "Logs as data"},
-          {"label": "Responsive web design"},
-          {"label": "Mobile first"},
-          {"label": "Declarative provisioning"},
-          {"label": "Remote usability testing"},
-          {"label": "Semantic monitoring"},
-          {"label": "Edge Side Includes for page composition"},
-          {"label": "Configuration in DNS"}
-        ]},
-        {"label": "Platforms", "technologies": [
-          {"label": "Node.js"},
-          {"label": "Riak"},
-          {"label": "Domain-specific PaaS"},
-          {"label": "Linux containers"},
-          {"label": "Private clouds"},
-          {"label": "Hybrid clouds"},
-          {"label": "MongoDB"},
-          {"label": "Continuous integration in the cloud"},
-          {"label": "Couchbase"},
-          {"label": "Single threaded servers with asynchronous I/O"}
-        ]},
-        {"label": "Languages & Frameworks", "technologies": [
-          {"label": "Domain-Specific Languages"},
-          {"label": "Scratch, Alice, and Kodu"},
-          {"label": "Twitter Bootstrap"},
-          {"label": "Sinatra"},
-          {"label": "AngularJS and Knockout"},
-          {"label": "Require.js"},
-          {"label": "Dropwizard"},
-          {"label": "Jekyll"},
-          {"label": "HTML5 for offline applications"}
-        ]}
-      ]},
-      {"label": "Trend", "categories": [
-        {"label": "Tools", "technologies": [
-          {"label": "Logic-free markup"},
-          {"label": "Crazy Egg"},
-          {"label": "Zipkin"},
-          {"label": "Zucchini"},
-          {"label": "GemJars"},
-          {"label": "Light Table"},
-          {"label": "Riemann"}
-        ]},
-        {"label": "Techniques", "technologies": [
-          {"label": "Deployment and scripting test tools"}
-        ]},
-        {"label": "Platforms", "technologies": [
-          {"label": "Calatrava"},
-          {"label": "Datomic"},
-          {"label": "Vert.x"},
-          {"label": "Azure"},
-          {"label": "Open source IaaS"},
-          {"label": "BigQuery"},
-          {"label": "Windows Phone"}
-        ]},
-        {"label": "Languages & Frameworks", "technologies": [
-          {"label": "F#"},
-          {"label": "ClojureScript"},
-          {"label": "Lua"},
-          {"label": "RubyMotion"},
-          {"label": "Gremlin"},
-          {"label": "JavaScript as a platform"}
-        ]}
-      ]},
-    /*  {"label": "Future", "categories": [
-        {"label": "Tools", "technologies": [
-          {"label": "Enterprise service bus"},
-          {"label": "VCS with implicit workflow"},
-          {"label": "Maven"}
-        ]},
-        {"label": "Techniques", "technologies": [
-          {"label": "Database based integration"},
-          {"label": "Feature branching"},
-          {"label": "Test recorders"},
-          {"label": "Exhaustive browser-based testing"}
-        ]},
-        {"label": "Platforms", "technologies": [
-          {"label": "WS-*"},
-          {"label": "Java portal servers"},
-          {"label": "Zero-code packages"},
-          {"label": "Singleton infrastructure"},
-          {"label": "Meteor.js"}
-        ]},
-        {"label": "Languages & Frameworks", "technologies": [
-          {"label": "Backbone.js"},
-          {"label": "Logic in stored procedures"},
-          {"label": "Google Dart"},
-          {"label": "Component-based frameworks"}
-        ]}
-      ]}*/
-    ];
-
-    var radarData = localStorageWatcher.syncWithLocalStorage(LOCAL_STORAGE_ID, defaultData);
-
-    var radar = new Radar(radarData);
-
-    function getCategories() {
-      var categories = _.pluck(radar.data, 'categories');
-      return _.pluck(categories, 'label');
-    }
-
-    function getStatuses() {
-      return _.pluck(radar.data, 'label');
-    }
-
-    return { radar: radar, categories: getCategories(), statuses: getStatuses() };
-  }]);
+    function ($log, $timeout, localStorageWatcher) {
+        
+        var LOCAL_STORAGE_ID = 'sadc.technologyRadarData';
+        
+        function Radar(data) {
+            //this.data = defaultData;
+            
+            this.data = [
+                {
+                    label: "Core",
+                    categories: [
+                        {
+                            label: 'Tools', technologies: [
+                            {"label": "IIS"},
+                            {"label": "Tomcat"},
+                            {"label": "Apache"},
+                            {"label": "Express"},
+                            {"label": "Redis"},
+                            {"label": "Ehcache"},
+                            {"label": "jUnit/NUnit/PHPUnit/OCUnit"},
+                            {"label": "Appium"},
+                            {"label": "Composer/Nuget/Npm/Yarn"},
+                            {"label": "Nginx"},
+                            {"label": "Jenkin"},
+                            {"label": "Grunt/Gulp"},
+                            {"label": "Sass/Less/PostCss"},
+                            {"label": "SQLite"},
+                            {"label": "Realm"},
+                            {"label": "SSIS/SSAA/SSRS"},
+                            {"label": "MSSQL"},
+                            {"label": "Oracle"},
+                            {"label": "MySQL"},
+                        ]
+                        },
+                        {
+                            label: 'Techniques/Languages', technologies: [
+                            {"label": "Javascript"},
+                            {"label": "HTML/CSS"},
+                            {"label": "C#"},
+                            {"label": "C++"},
+                            {"label": "PHP"},
+                            {"label": "Java"},
+                            {"label": "SQL"},
+                            {"label": "Responsive web design"},
+                            {"label": "OOP"},
+                            
+                            {"label": "Go"},
+                            {"label": "Swift/Objective C"},
+                            {"label": "Typescript"}]
+                        },
+                        {
+                            label: 'Platforms', technologies: [{"label": "Windows"},
+                            {"label": "MS Azure"},
+                            {"label": "Android"},
+                            {"label": "IOS"},
+                            {"label": "JDK"},
+                            {"label": ".NET"},
+                            {"label": "LAMP/LAEMP"},
+                            {"label": "NodeJs"},
+                            {"label": "Wordpress"},
+                            {"label": "Phonegap/Cordova"},
+                            {"label": "Windows server"},
+                            {"label": "ADO.NET"},
+                            
+                            {"label": "Cocoa"},
+                        ]
+                        },
+                        {
+                            label: 'Frameworks & Libraries', technologies: [
+                            {"label": "ASP.NET MVC"},
+                            {"label": "Bootstrap"},
+                            {"label": ".NET Web API"},
+                            {"label": "JSP"},
+                            {"label": "Spring"},
+                            {"label": "JAX-WS/JAX-RS"},
+                            {"label": "EJB3"},
+                            {"label": "JMS/MDB"},
+                            {"label": "JDBC"},
+                            {"label": "Angular"},
+                            {"label": "Entity Framework"},
+                            {"label": "Symfony"},
+                            {"label": "jQuery"},]
+                        },
+                    ]
+                },
+                {
+                    label: "Non-Core",
+                    categories: [
+                        {
+                            label: 'Tools', technologies: [
+                            {"label": "MSBuild/Nant"},
+                            {"label": "TeamCity"},
+                            {"label": "Microsoft Visual Studio Team Services"},
+                            {"label": "RedGate Ant Peformance Profiler"},
+                            {"label": "ASP.NET Web Forms"},
+                            {"label": "Websphere MQ"},
+                            {"label": "ActiveMQ"},
+                            {"label": "HornetMQ"},
+                            {"label": "RabbitMQ"},
+                            {"label": "OSGI Platform"},
+                            {"label": "Spring Integration"},
+                            {"label": "Oracle SOA/ESB"},
+                            {"label": "Mule Soft"},
+                            {"label": "MemCache"},
+                            {"label": "JBoss AS"},
+                            {"label": "Glassfish"},
+                            {"label": "WebSphere"},
+                            {"label": "Eclipse Virgo (OSGI Server)"},
+                            {"label": "Lucene"},
+                            {"label": "Solr"},
+                            {"label": "Elastic Search"},
+                            {"label": "Websphere Process"},
+                            {"label": "Oracle BPM"},
+                            {"label": "Yeoman"},
+                            {"label": "Webpack"},
+                            {"label": "Capistrano"},
+                            {"label": "Vagrant"},
+                            {"label": "Puppet"},
+                            {"label": "Firebase"},
+                            {"label": "Hadoop"},
+                            {"label": "Spark"},
+                        ]
+                        },
+                        {
+                            label: 'Techniques/Languages', technologies: [
+                            {"label": "Scala/Lift"},
+                            {"label": "Groovy"},
+                            {"label": "Ruby"},
+                            {"label": "Python"},
+                            {"label": "Go"},
+                        ]
+                        },
+                        {
+                            label: 'Platforms', technologies: [
+                            {"label": "Windows Form"},
+                            {"label": "WPF"},
+                            {"label": "XML Web Services"},
+                            {"label": "Universal Windows App"},
+                            {"label": "WCF"},
+                            {"label": "Umbraco"},
+                            {"label": "SiteCore"},
+                            {"label": "Kentico"},
+                            {"label": "DotNetNuke"},
+                            {"label": "Dynamics CRM"},
+                            {"label": "MS Azure IAAS"},
+                            {"label": "SharePoint"},
+                            {"label": "Liferay"},
+                            {"label": "CQ5"},
+                            {"label": "Drupal"},
+                            {"label": "Magento"},
+                            {"label": "Moodle"},
+                            {"label": "Amazone Cloud"},
+                            {"label": "React Native"},
+                            {"label": "Xamarin"},
+                        ]
+                        },
+                        
+                        {
+                            label: 'Frameworks & Libraries', technologies: [
+                            {"label": "ASP.NET Web Forms"},
+                            {"label": ".Net Core"},
+                            {"label": "ASP.NET Web Forms"},
+                            {"label": "Entity Framework Core"},
+                            {"label": "Swing/JavaFX"},
+                            {"label": "Struts"},
+                            {"label": "JSF"},
+                            {"label": "Vaadin"},
+                            {"label": "Mule ESB"},
+                            {"label": "WSO2"},
+                            {"label": "Apache Camel"},
+                            {"label": "Vue"},
+                            {"label": "ReactJs"},
+                            {"label": "KendoUI"},
+                            {"label": "D3"},
+                            {"label": "Lavarel"},
+                            {"label": "Zend"},
+                            {"label": "Yii"},
+                            {"label": "Django"},
+                            {"label": "Ruby on Rails"},
+                            {"label": "Cocos2D, 3D"},
+                            {"label": "OpenGL ES"},
+                        ]
+                        },
+                    
+                    ]
+                },
+                {
+                    label: "Trend",
+                    categories: [
+                        {label: 'Tools', technologies: []},
+                        {label: 'Techniques/Languages', technologies: []},
+                        {label: 'Platforms', technologies: []},
+                        {label: 'Frameworks & Libraries', technologies: []},
+                    ]
+                },
+                {
+                    label: "Future",
+                    categories: [
+                        {label: 'Tools', technologies: []},
+                        {label: 'Techniques/Languages', technologies: []},
+                        {label: 'Platforms', technologies: []},
+                        {label: 'Frameworks & Libraries', technologies: []},
+                    ]
+                }
+            ];
+        }
+        
+        Radar.prototype.getTechnologies = function () {
+            var categories = _.pluck(this.data, 'categories');
+            return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
+        };
+        
+        
+        var radarData = localStorageWatcher.syncWithLocalStorage(LOCAL_STORAGE_ID, this.data);
+        
+        var radar = new Radar(radarData);
+        
+        function getCategories() {
+            var categories = _.pluck(radar.data, 'categories');
+            return _.pluck(categories, 'label');
+        }
+        
+        function getStatuses() {
+            return _.pluck(radar.data, 'label');
+        }
+        
+        return {radar: radar, categories: getCategories(), statuses: getStatuses()};
+    }]);
