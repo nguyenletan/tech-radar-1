@@ -1,11 +1,11 @@
 angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'localStorageWatcher',
     function ($log, $timeout, localStorageWatcher) {
-        
+
         var LOCAL_STORAGE_ID = 'sadc.technologyRadarData';
-        
+
         function Radar(data) {
             //this.data = defaultData;
-            
+
             this.data = [
                 {
                     label: "Core",
@@ -44,7 +44,6 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                             {"label": "SQL"},
                             {"label": "Responsive web design"},
                             {"label": "OOP"},
-                            
                             {"label": "Go"},
                             {"label": "Swift/Objective C"},
                             {"label": "Typescript"}]
@@ -62,7 +61,6 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                             {"label": "Phonegap/Cordova"},
                             {"label": "Windows server"},
                             {"label": "ADO.NET"},
-                            
                             {"label": "Cocoa"},
                         ]
                         },
@@ -91,7 +89,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                             label: 'Tools', technologies: [
                             {"label": "MSBuild/Nant"},
                             {"label": "TeamCity"},
-                            {"label": "Microsoft Visual Studio Team Services"},
+                            {"label": "MVSTS"},
                             {"label": "RedGate Ant Peformance Profiler"},
                             {"label": "ASP.NET Web Forms"},
                             {"label": "Websphere MQ"},
@@ -155,7 +153,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                             {"label": "Xamarin"},
                         ]
                         },
-                        
+
                         {
                             label: 'Frameworks & Libraries', technologies: [
                             {"label": "ASP.NET Web Forms"},
@@ -182,11 +180,11 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                             {"label": "OpenGL ES"},
                         ]
                         },
-                    
+
                     ]
                 },
                 {
-                    label: "Trend",
+                    label: "Adapting",
                     categories: [
                         {label: 'Tools', technologies: []},
                         {label: 'Techniques/Languages', technologies: []},
@@ -205,25 +203,25 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                 }
             ];
         }
-        
+
         Radar.prototype.getTechnologies = function () {
             var categories = _.pluck(this.data, 'categories');
             return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
         };
-        
-        
+
+
         var radarData = localStorageWatcher.syncWithLocalStorage(LOCAL_STORAGE_ID, this.data);
-        
+
         var radar = new Radar(radarData);
-        
+
         function getCategories() {
             var categories = _.pluck(radar.data, 'categories');
             return _.pluck(categories, 'label');
         }
-        
+
         function getStatuses() {
             return _.pluck(radar.data, 'label');
         }
-        
+
         return {radar: radar, categories: getCategories(), statuses: getStatuses()};
     }]);

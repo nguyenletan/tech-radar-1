@@ -12,7 +12,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         equalPortions.push(100 / numCategories)
       });
 
-      
+
 
       var width = attrs.width,
         height = attrs.height,
@@ -90,8 +90,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
 
         /* If two nodes are within a box of xThreshold-by-yThreshold dimensions, reject this placement */
         /* This should scale with the diagramRadius */
-        var xThreshold = .15 * diagramRadius;
-        var yThreshold = .045 * diagramRadius;
+        var xThreshold = .1 * diagramRadius; //.15
+        var yThreshold = .025 * diagramRadius;//.045
 
         var foundOne = false;
         _.each(radarService.radar.getTechnologies(), function (p) {
@@ -136,11 +136,11 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .attr("fill", function (d, slice, ring) {
           return colorFiveGroupsOfSeven(7*slice + ring + 3 );
         })
-        .attr("stroke", "grey")
+        /*.attr("stroke", "grey")
         .attr("stroke-width", "1px")
-        .attr("stroke-opacity", ".25")
+        .attr("stroke-opacity", ".25")*/
         .datum(function (d, i, j) {
-          var numRings = _.size(radarService.statuses) -2 ;
+          var numRings = _.size(radarService.statuses) - 1 ;
           d.arc = { innerRadius: getInnerRadius(diagramRadius, numRings, j),
             outerRadius: j == numRings - 1 ? diagramRadius : getInnerRadius(diagramRadius, numRings, j + 1)};
           _.extend(d.arc, categoryArcs[d.label]);

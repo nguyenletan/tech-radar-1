@@ -6,14 +6,14 @@
 </style>
 <div class="container" style="width: 100%">
     <div class="row">
-        <div class="span8" >
+        <div class="span9" >
             <span class="mouseover-title">
                 <h3>{{activeCategory.label}}</h3>
                 <h4>{{ activeStatus.label}}</h4>
             </span>
             <radar-diagram height="700" width="700"/>
         </div>
-        <div class="span3 radar-manager" style="float:right">
+        <div class="span2 radar-manager" style="float:right">
             <ul class="nav nav-tabs">
                 <li ng-repeat="status in radarData" ng-class="{active : status.active}">
                     <a ng-click="setActive(status)">{{ status.label }}</a>
@@ -28,7 +28,7 @@
                         <input type="text" ng-model="category.new" class="input-small" ng-show="category.addingOne" style="margin-top: 5px"/>
                     </form>
                     <ul>
-                        <li ng-repeat="technology in category.technologies" ng-class="{'active-tech' : technology.active}">
+                        <li ng-repeat="technology in category.technologies"  ng-class="{'active-tech' : technology.active}">
                             {{ technology.label }} <i class="icon-remove" ng-click="removeTech(category, technology)"></i></li>
                     </ul>
                 </div>
