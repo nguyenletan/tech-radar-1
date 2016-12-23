@@ -13,7 +13,7 @@
             </span>
             <radar-diagram height="700" width="700"/>
         </div>
-        <div class="span2 radar-manager" style="float:right">
+        <div class="span3 radar-manager" style="float:right">
             <ul class="nav nav-tabs">
                 <li ng-repeat="status in radarData" ng-class="{active : status.active}">
                     <a ng-click="setActive(status)">{{ status.label }}</a>
@@ -29,7 +29,7 @@
                     </form>
                     <ul>
                         <li ng-repeat="technology in category.technologies"  ng-class="{'active-tech' : technology.active}">
-                            {{ technology.label }} <i class="icon-remove" ng-click="removeTech(category, technology)"></i></li>
+                            {{technology.index}} - {{ technology.label }} <i class="icon-remove" ng-click="removeTech(category, technology)"></i></li>
                     </ul>
                 </div>
             </div>
