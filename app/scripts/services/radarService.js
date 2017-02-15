@@ -159,7 +159,6 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               label: 'Frameworks & Libraries',
               technologies: [
                 {"label": "ASP.NET Web Forms"},
-                {"label": "ASP.NET Web Forms"},
                 {"label": "Entity Framework Core"},
                 {"label": "Swing/JavaFX"},
                 {"label": "Struts"},
@@ -210,7 +209,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               {"label": "VueJs"}
             ]},
           ]
-        },
+        }/*,
         {
           label: "Future",
           categories: [
@@ -219,7 +218,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
             {label: 'Platforms', technologies: []},
             {label: 'Frameworks & Libraries', technologies: []},
           ]
-        }
+        }*/
       ];
 
       fillIndex(this.data);

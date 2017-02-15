@@ -7,38 +7,21 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
     replace: true,
     link: function (scope, element, attrs) {
 
-      var numCategories = radarService.categories.length, equalPortions = [];
+      var numCategories = 4 /*radarService.categories.length*/, equalPortions = [];
+
       _(numCategories).times(function () {
         equalPortions.push(100 / numCategories)
       });
 
-
+      var colorPattern = ['#5bc0eb', '#fde74c', '#9bc53d', '#e55934', '#fa7921']
       var width = attrs.width,
         height = attrs.height,
         padding = 30,
         diagramRadius = Math.min(attrs.width, attrs.height) / 2 - padding;
+      console.log(diagramRadius);
 
-      var color = d3.scale.category20c().domain(_.range(20));
-      var colorFiveGroupsOfSeven = d3.scale.category20c().copy();
 
-      var colorGroups = _.groupBy(color.range(), function (a, b) {
-        return Math.floor(b / 4);
-      });
-
-      colorFiveGroupsOfSeven.range(_.flatten(_.map(colorGroups, function (group) {
-        var expandedGroup = [];
-        _.each(group, function (item, index, group) {
-          expandedGroup.push(item);
-          if (index < group.length - 1) {
-            expandedGroup.push(d3.interpolateRgb(item, group[index + 1])(.5));
-          }
-        });
-        return expandedGroup;
-      })));
-      colorFiveGroupsOfSeven.domain(_.range(35));
-
-      var pie = d3.layout.pie()
-        .sort(null);
+      var pie = d3.pie().sort(null);
 
       var categoryPie = pie(equalPortions);
       //debugger;
@@ -49,8 +32,11 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         "Frameworks & Libraries": categoryPie[3]
       };
 
-      var arc = d3.svg.arc();
-
+      var arc = d3.arc().innerRadius(10)
+        .outerRadius(1000)
+        .startAngle(0)
+        .endAngle(Math.PI * 2);
+      //arc();
       var svg = d3.select(element[0]).append("svg")
         .attr("width", width)
         .attr("height", height);
@@ -62,26 +48,6 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
       /**
        *  radiusSoftener should be close to 1
        */
-      function getInnerRadius(outermostRadius, numRings, ringIndex) {
-        var radiusSoftener = 1;
-
-        var totalArea = Math.PI * Math.pow(outermostRadius, 2);
-        var ringArea = totalArea / numRings;
-
-        function innerRadiusHelper(outerRadius, area) {
-          var squared = (Math.PI * Math.pow(outerRadius, 2) * Math.pow(radiusSoftener, 2) - area) / Math.PI;
-          return squared > 0 ? Math.sqrt(squared) : 0;
-        }
-
-        var currentRing = numRings - 1;
-        var currentOuterRadius = outermostRadius;
-        while (currentRing-- > ringIndex) {
-          currentOuterRadius = innerRadiusHelper(currentOuterRadius, ringArea);
-        }
-
-        return Math.max(0, innerRadiusHelper(currentOuterRadius, ringArea));
-      }
-
       function isOverlappingAnotherPoint(o) {
         function distance(a, b) {
           return Math.sqrt(Math.pow(Math.abs(a.x - b.x), 2) + Math.pow(Math.abs(a.y - b.y), 2));
@@ -90,7 +56,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         /* If two nodes are within a box of xThreshold-by-yThreshold dimensions, reject this placement */
         /* This should scale with the diagramRadius */
         var xThreshold = .15 * diagramRadius; //.15
-        var yThreshold = .025 * diagramRadius;//.045
+        var yThreshold = .03 * diagramRadius;//.045
 
         var foundOne = false;
         _.each(radarService.radar.getTechnologies(), function (p) {
@@ -132,24 +98,47 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .append("g")
         .attr("class", "slice");
 
+      var k = 0;
+
       arcCategoryEnter.append("path")
         .attr("fill", function (d, slice, ring) {
-          return colorFiveGroupsOfSeven(7 * slice + ring + 3);
+          return colorPattern[slice];
         })
-        /*.attr("stroke", "grey")
-         .attr("stroke-width", "1px")
-         .attr("stroke-opacity", ".25")*/
+        .attr("stroke", "white")
+        .attr("stroke-width", "2px")
+        .attr("stroke-opacity", "1.0")
         .datum(function (d, i, j) {
-          var numRings = _.size(radarService.statuses) - 1;
+          var numRings = _.size(radarService.statuses) + 1;
+          var innerRadius, outerRadius;
+
+          switch (k) {
+            case 0:
+              innerRadius = 0;
+              outerRadius = 220;
+              break;
+            case 1:
+              innerRadius = 220;
+              outerRadius = 340;
+              break;
+            case 2:
+              innerRadius = 340;
+              outerRadius = 400;
+              break;
+          }
+
           d.arc = {
-            innerRadius: getInnerRadius(diagramRadius, numRings, j),
-            outerRadius: j == numRings - 1 ? diagramRadius : getInnerRadius(diagramRadius, numRings, j + 1)
+            innerRadius: innerRadius,
+            outerRadius: outerRadius,
+            k_index: k
           };
           _.extend(d.arc, categoryArcs[d.label]);
+          if (i === numRings - 1) {
+            k++;
+          }
           return d;
         })
         .attr("d", function (d) {
-          return arc.innerRadius(d.arc.innerRadius).outerRadius(d.arc.outerRadius)(d.arc);
+          return arc.innerRadius(d.arc.innerRadius).outerRadius(d.arc.outerRadius).startAngle(d.arc.startAngle).endAngle(d.arc.endAngle)(d.arc);
         })
         .on('mouseover', function (d) {
           d.active = true;
@@ -169,7 +158,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .enter()
         .append("g")
         .datum(function (category, categoryIndex) {
-          category.color = colorFiveGroupsOfSeven(7 * categoryIndex + 6);
+          category.color = colorPattern[categoryIndex];
           return category;
         })
         .attr("class", "category");
@@ -203,27 +192,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             redrawTechCircles();
           });
 
-        var lineData = [{"x": 1, "y": 5}, {"x": 20, "y": 20},
-          {"x": 40, "y": 10}, {"x": 1, "y": 1}
-        ];
-        var lineFunction = d3.svg.line()
-          .x(function (d) {
-            return d.x;
-          })
-          .y(function (d) {
-            return d.y;
-          })
-          .interpolate("linear");
-
-        d3.symbolTriangle.draw(techEnter, 50);
-
-
-        /*techEnter.append('polygon').attr("points", 50 + '' + )
-          .attr("stroke", "blue")
-          .attr("stroke-width", 1)
-          .attr("fill", "yellow");*/
-
-
+        //draw inner cirlce line
         techEnter.append("circle").attr("r", defaultTechRadius)
           .datum(function (d) {
             var parentData = d3.select(this.parentNode.parentNode).datum();
@@ -232,8 +201,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             }
             return d;
           })
-          //.style("stroke", "grey")
-          //.style("fill", "#ccc")
+          .style("stroke", "white")
+          .style("stroke-width", "1px")
           .style("fill", "white")
           .style("opacity", "1")
           .attr("cx", function (d) {
@@ -247,20 +216,22 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           .text(function (d) {
             return d.index;//getTechLabelSubstring(d.label);
           })
+          .attr('x', function (d) {
+            return parseInt(d.index) > 9 ? d.x - 6 : d.x - 3;
+          })
+          .attr('y', function (d) {
+            return d.y + 3.5;
+          })
+          .attr('fill', 'black')
+          .attr('font-weight', 'bold')
           .attr({
             "text-anchor": "middle",
             "font-size": function (d) {
               return defaultTechRadius / ((defaultTechRadius * 10) / 100);
             }
-
-          })
-          .attr("x", function (d) {
-            return d.x;
-            //return parseInt(d.index) > 9 ? d.x  : d.x;
-          })
-          .attr("y", function (d) {
-            return d.y + 3.5;
           });
+
+
         technologies.exit().remove();
       }
 
@@ -273,7 +244,6 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
 
       function interpolateText(string, initialLength, index) {
         return function (t) {
-          //console.log()
           return t == 0 ? getTechLabelSubstring(string) : string.substring(0, Math.round((string.length - initialLength) * t) + initialLength);
           //return index;
         };
@@ -281,8 +251,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
 
       function reverseInterpolateText(string, initialLength, index) {
         return function (t) {
-          /*var charsToRemove = t * (string.length - initialLength);
-           return t == 1 ? getTechLabelSubstring(string) : string.substring(0, string.length - charsToRemove );*/
+          var charsToRemove = t * (string.length - initialLength);
+          //return t == 1 ? getTechLabelSubstring(string) : string.substring(0, string.length - charsToRemove);
           return index;
         };
       }
@@ -290,23 +260,30 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
       function redrawTechCircles() {
         scope.$apply();
 
-        technologies.selectAll("text").transition()
-          .duration(150)
+        technologies.selectAll("text")
+          .style('fill', function(d){
+            return d.active ? 'white' : 'black';
+          })
+          .transition()
+          .duration(10)
           .tween("text", function (d) {
+            var node = this;
             var interpolationFunction = d.active ? interpolateText : reverseInterpolateText;
             var i = interpolationFunction(d.label, Math.min(this.textContent.length, truncatedLabelLength), d.index);
             return function (t) {
-              this.textContent = i(t);
+              node.textContent = i(t);
+              node.fill = 'white';//d.active ? 'white' : 'black';
+
             };
             /*if (i(1) !== this.textContent) {
              return function (t) {
-             this.textContent = i(t);
+             node.textContent = i(t);
              };
              }*/
           });
 
         technologies.selectAll("circle").transition()
-          .duration(500)
+          .duration(100)
           .attr("r", function (d) {
             return d.active ? hoverTechRadius : (d.radius ? d.radius : defaultTechRadius);
           });
