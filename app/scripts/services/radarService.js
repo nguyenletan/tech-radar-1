@@ -2,90 +2,91 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
   function ($log, $timeout, localStorageWatcher) {
 
     var LOCAL_STORAGE_ID = 'sadc.technologyRadarData';
-
+    categoryName = 'Frameworks & Libraries';
     function Radar(data) {
       //this.data = defaultData;
 
-      window.temp = this.data = [{
-        label: "Core",
-        categories: [{
-          label: 'Tools',
-          technologies: [
-            {"label": "IIS"},
-            {"label": "Tomcat"},
-            {"label": "Apache"},
-            {"label": "Express"},
-            {"label": "Redis"},
-            {"label": "Ehcache"},
-            {"label": "jUnit/NUnit/PHPUnit/OCUnit"},
-            {"label": "Appium"},
-            {"label": "Composer/Nuget/Npm/Yarn"},
-            {"label": "Nginx"},
-            {"label": "Jenkin"},
-            {"label": "Grunt/Gulp"},
-            {"label": "Sass/Less/PostCss"},
-            {"label": "SQLite"},
-            {"label": "Realm"},
-            {"label": "SSIS/SSAA/SSRS"},
-            {"label": "MSSQL"},
-            {"label": "Oracle"},
-            {"label": "MySQL"},
+      window.temp = this.data = [
+        {
+          label: "Core",
+          categories: [{
+            label: 'Tools',
+            technologies: [
+              {"label": "IIS"},
+              {"label": "Tomcat"},
+              {"label": "Apache"},
+              {"label": "Express"},
+              {"label": "Redis"},
+              {"label": "Ehcache"},
+              {"label": "jUnit/NUnit/PHPUnit/OCUnit"},
+              {"label": "Appium"},
+              {"label": "Composer/Nuget/Npm/Yarn"},
+              {"label": "Nginx"},
+              {"label": "Jenkin"},
+              {"label": "Grunt/Gulp"},
+              {"label": "Sass/Less/PostCss"},
+              {"label": "SQLite"},
+              {"label": "Realm"},
+              {"label": "SSIS/SSAA/SSRS"},
+              {"label": "MSSQL"},
+              {"label": "Oracle"},
+              {"label": "MySQL"},
+            ]
+          },
+            {
+              label: 'Techniques & Languages',
+              technologies: [
+                {"label": "Javascript"},
+                {"label": "HTML/CSS"},
+                {"label": "C#"},
+                {"label": "C++"},
+                {"label": "PHP"},
+                {"label": "Java"},
+                {"label": "SQL"},
+                {"label": "Responsive web design"},
+                {"label": "OOP"},
+                {"label": "Go"},
+                {"label": "Swift/Objective C"},
+                {"label": "Typescript"}
+              ]
+            },
+            {
+              label: 'Platforms',
+              technologies: [{"label": "Windows"},
+                {"label": "MS Azure"},
+                {"label": "Android"},
+                {"label": "IOS"},
+                {"label": "JDK"},
+                {"label": ".NET"},
+                {"label": "LAMP/LAEMP"},
+                {"label": "NodeJs"},
+                {"label": "Wordpress"},
+                {"label": "Phonegap/Cordova"},
+                {"label": "Windows server"},
+                {"label": "ADO.NET"},
+                {"label": "Cocoa"},
+              ]
+            },
+            {
+              label: 'Frameworks & Libraries',
+              technologies: [
+                {"label": "ASP.NET MVC"},
+                {"label": "Bootstrap"},
+                {"label": ".NET Web API"},
+                {"label": "JSP"},
+                {"label": "Spring"},
+                {"label": "JAX-WS/JAX-RS"},
+                {"label": "EJB3"},
+                {"label": "JMS/MDB"},
+                {"label": "JDBC"},
+                {"label": "AngularJS 1"},
+                {"label": "Entity Framework"},
+                {"label": "Symfony"},
+                {"label": "jQuery"},
+              ]
+            },
           ]
         },
-          {
-            label: 'Techniques/Languages',
-            technologies: [
-              {"label": "Javascript"},
-              {"label": "HTML/CSS"},
-              {"label": "C#"},
-              {"label": "C++"},
-              {"label": "PHP"},
-              {"label": "Java"},
-              {"label": "SQL"},
-              {"label": "Responsive web design"},
-              {"label": "OOP"},
-              {"label": "Go"},
-              {"label": "Swift/Objective C"},
-              {"label": "Typescript"}
-            ]
-          },
-          {
-            label: 'Platforms',
-            technologies: [{"label": "Windows"},
-              {"label": "MS Azure"},
-              {"label": "Android"},
-              {"label": "IOS"},
-              {"label": "JDK"},
-              {"label": ".NET"},
-              {"label": "LAMP/LAEMP"},
-              {"label": "NodeJs"},
-              {"label": "Wordpress"},
-              {"label": "Phonegap/Cordova"},
-              {"label": "Windows server"},
-              {"label": "ADO.NET"},
-              {"label": "Cocoa"},
-            ]
-          },
-          {
-            label: 'Frameworks & Libraries',
-            technologies: [
-              {"label": "ASP.NET MVC"},
-              {"label": "Bootstrap"},
-              {"label": ".NET Web API"},
-              {"label": "JSP"},
-              {"label": "Spring"},
-              {"label": "JAX-WS/JAX-RS"},
-              {"label": "EJB3"},
-              {"label": "JMS/MDB"},
-              {"label": "JDBC"},
-              {"label": "AngularJS 1"},
-              {"label": "Entity Framework"},
-              {"label": "Symfony"},
-              {"label": "jQuery"},
-            ]
-          },
-        ]
-      },
         {
           label: "Non-Core",
           categories: [{
@@ -123,7 +124,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
             ]
           },
             {
-              label: 'Techniques/Languages',
+              label: 'Techniques & Languages',
               technologies: [
                 {"label": "Scala/Lift"},
                 {"label": "Groovy"},
@@ -184,41 +185,39 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
         {
           label: "Adopting",
           categories: [
-            {label: 'Tools', technologies: [
+            {
+              label: 'Tools', technologies: [
               {"label": "Eclipse Virgo (OSGI Server)"},
               {"label": "Spark"}
-            ]},
+            ]
+            },
             {
-              label: 'Techniques/Languages',
+              label: 'Techniques & Languages',
               technologies: [
                 {"label": "Go/Go lang"}
 
               ]
             },
-            {label: 'Platforms', technologies: [
+            {
+              label: 'Platforms', technologies: [
               {"label": "Universal Windows App"},
               {"label": ".Net Core"},
               {"label": "Spring Cloud"}
-            ]},
-            {label: 'Frameworks & Libraries', technologies: [
+            ]
+            },
+            {
+              label: 'Frameworks & Libraries', technologies: [
               {"label": "ReactJs"},
               {"label": "React Native"},
               {"label": "ASP.NET Core"},
               {"label": "Angular2"},
               {"label": "Lift"},
               {"label": "VueJs"}
-            ]},
+            ]
+            },
           ]
-        }/*,
-        {
-          label: "Future",
-          categories: [
-            {label: 'Tools', technologies: []},
-            {label: 'Techniques/Languages', technologies: []},
-            {label: 'Platforms', technologies: []},
-            {label: 'Frameworks & Libraries', technologies: []},
-          ]
-        }*/
+        },
+
       ];
 
       fillIndex(this.data);
@@ -228,7 +227,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       for (var item of data) {
         for (var category of item.categories) {
           var i = 0;
-          for(var technology of category.technologies){
+          for (var technology of category.technologies) {
             technology.index = i;
             i++;
           }
@@ -238,6 +237,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
 
     Radar.prototype.getTechnologies = function () {
       var categories = _.pluck(this.data, 'categories');
+      //console.log(categories);
       return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
     };
 
@@ -248,13 +248,55 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
 
     function getCategories() {
       var categories = _.pluck(radar.data, 'categories');
+
       return _.pluck(categories, 'label');
     }
+
+    function getTechListByCategoryName() {
+      var result = [];
+      if (1) {
+        var categories = _.flatten(_.pluck(radar.data, 'categories'));
+        //categories = _.where(categories, {label: this.categoryName});
+        for (var i = 0, n = categories.length; i < n; i++) {
+          switch(i % 3){
+            case 2:
+              categories[i].group = 'Adopting';
+              break;
+            case 1:
+              categories[i].group = 'Non-Core';
+              break;
+            case 0:
+              categories[i].group = 'Core';
+              break;
+            default:
+              break;
+          }
+        }
+
+        console.log(categories);
+
+        result = categories;
+
+      }
+      return result;
+    }
+
 
     function getStatuses() {
       return _.pluck(radar.data, 'label');
     }
 
-    return {radar: radar, categories: getCategories(), statuses: getStatuses()};
+    //getTechListByCategoryName('Techniques & Languages');
+
+    var o = {
+      radar: radar,
+      categories: getCategories(),
+      statuses: getStatuses(),
+      groupActive: 'Frameworks & Libraries',
+      techList: getTechListByCategoryName()
+    };
+    console.log(o);
+    return o;
   }
+
 ]);

@@ -1,7 +1,15 @@
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+$imgRadar0: '../images/menu_quadrant_0.png';
+$imgRadar1: '../images/menu_quadrant_1.png';
+$imgRadar2: '../images/menu_quadrant_2.png';
+$imgRadar3: '../images/menu_quadrant_3.png';
+$imgRadarInactive0: '../images/menu_quadrant_0--inactive.png';
+$imgRadarInactive1: '../images/menu_quadrant_1--inactive.png';
+$imgRadarInactive2: '../images/menu_quadrant_2--inactive.png';
+$imgRadarInactive3: '../images/menu_quadrant_3--inactive.png';
 
-@import "bootstrap-sass/assets/stylesheets/bootstrap";
+/*@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";*/
 /*@import "bootstrap-sass/lib/responsive";*/
 
 /* Put your CSS here */
@@ -10,26 +18,27 @@ html, body {
 }
 
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+  background: #FAFAFA;
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  /*font-family: "  Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  color: #333;
 }
 
 .hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+  margin: 50px auto 0 auto;
+  width: 300px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #EEE;
+  border-radius: 6px;
+  padding: 60px;
 }
 
 .hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
 }
 
 input[type="text"].input-small {
@@ -50,25 +59,191 @@ input[type="text"].input-small {
   padding-right: 10px;
   margin: 0;
 }
+
 .new-category a {
   float: right;
 }
+
 .new-category input {
   margin-right: 10px;
 }
+
 .active-tech {
-/*  border-color: teal;
-  border-style: solid;
-  border-width: thin;*/
   font-weight: bold;
-  color: #4889ff;
+  background-color: teal;
+  color: #FFF;
+  transition: all 1s ease-in-out;
 }
+
+.techList-Platforms .active-tech{
+  background-color: #f38a3e;
+}
+
+.techList-FrameworksLibraries .active-tech{
+  background-color: #1ebccd;
+}
+
+.techList-Tools .active-tech{
+  background-color: #86b782;
+}
+
+.techList-TechniquesLanguages .active-tech{
+  background-color: #b32059;
+}
+
+
+
 .category {
   padding: 5px;
   //@include border-radius(5px);
   margin-bottom: 5px;
 }
+
 .mouseover-title {
-  position:absolute;
+  position: absolute;
   color: slategrey;
+}
+
+.radar-quadrant-navigation {
+  list-style-type: none !important;
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants {
+  display: block;
+  background-color: #FFF;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant {
+  box-sizing: border-box;
+  width: 50%;
+  padding: 0;
+  float: left;
+  text-align: center;
+  display: block;
+  vertical-align: middle;
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a {
+  border-bottom: none;
+  box-sizing: border-box;
+  height: 75px;
+  color: #FFF;
+  display: block;
+  vertical-align: middle;
+  line-height: 1em;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: #808185;
+  background-size: 65px 65px;
+  background-repeat: no-repeat;
+  padding: 28px 0;
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0 {
+  border-top: 0;
+  border-bottom: 1px solid #EEE;
+  background-position: bottom left;
+  background-image: url($imgRadarInactive0);
+  //padding: 18px 0
+  /*background-image: url(/imgs/radar/secondary_navigation_quadrant/menu_quadrant_techniques--inactive.png);*/
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0.selected,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0:active,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0:hover {
+  background-color: #86B782;
+  background-image: url($imgRadar0);
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1 {
+  background-position: top left;
+  background-image: url($imgRadarInactive1);
+  //background-image: url(/imgs/radar/secondary_navigation_quadrant/menu_quadrant_tools--inactive.png);
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1.selected,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1:active,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1:hover {
+  background-color: #B32059;
+  background-image: url($imgRadar1);
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2 {
+  border-right: 1px solid #EEE;
+  background-position: top right;
+  background-image: url($imgRadarInactive2);
+  //background-image: url(/imgs/radar/secondary_navigation_quadrant/menu_quadrant_platforms--inactive.png);
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2.selected,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2:active,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2:hover {
+  background-color: #F38A3E;
+  background-image: url($imgRadar2);
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3 {
+  border-bottom: 1px solid #EEE;
+  border-right: 1px solid #EEE;
+  background-position: bottom right;
+  background-image: url($imgRadarInactive3);
+}
+
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3.selected,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3:active,
+.radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3:hover {
+  background-color: #1EBCCD;
+  background-image: url($imgRadar3);
+}
+
+.title-wrapper {
+  margin-bottom: 25px;
+  margin-left: 0;
+  background-color: #EEE;
+  .column {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.title {
+  text-align: center;
+  padding-top: 20px;
+  letter-spacing: -.08em;
+  font-weight: 800;
+  font-size: 60px;
+  color: #333;
+  display: block;
+  margin: 25px 0;
+  text-transform: uppercase;
+  line-height: .8em;
+  border-bottom: none;
+}
+
+.group {
+  display: block;
+  /*padding: 1em .4em 1em 20px;*/
+  line-height: 1.15em;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 12px;
+  li {
+    padding: 0 5px;
+    line-height: 1.8em;
+  }
+
+}
+
+h3 {
+  padding-left: 10px;
+  line-height: 30px;
+  margin: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
 }

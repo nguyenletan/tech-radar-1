@@ -1,39 +1,82 @@
 <style type="text/css">
-    .tech-label {
-        background: white;
-        font-size: 8pt;
-    }
+  .tech-label {
+    background: white;
+    font-size: 8pt;
+  }
 </style>
-<div class="container" style="width: 100%">
-    <div class="row">
-        <div class="span9" >
-          <div>hello</div>
-            <span class="mouseover-title">
-                <h3>a{{activeCategory.label}}</h3>
-                <h4>a{{ activeStatus.label}}</h4>
-            </span>
-            <radar-diagram height="1000" width="1000"/>
-        </div>
-        <div class="span3 radar-manager" style="float:right">
-            <ul class="nav nav-tabs">
-                <li ng-repeat="status in radarData" ng-class="{active : status.active}">
-                    <a ng-click="setActive(status)">{{ status.label }}</a>
-                </li>
-            </ul>
-            <div ng-repeat="status in radarData" ng-show="status.active">
-                <div class="category"  ng-repeat="category in status.categories" style="background-color: {{category.color}}">
-                    <h5 style="display: inline;">{{ category.label }}</h5>
-                    <form ng-submit="category.addingOne = false; addTech(category, category.new)" class="new-category">
-                        <a ng-click="category.addingOne = true" ng-hide="category.addingOne">new</a>
-                        <a ng-click="category.new = ''; category.addingOne = false" ng-show="category.addingOne">cancel</a>
-                        <input type="text" ng-model="category.new" class="input-small" ng-show="category.addingOne" style="margin-top: 5px"/>
-                    </form>
-                    <ul>
-                        <li ng-repeat="technology in category.technologies"  ng-class="{'active-tech' : technology.active}">
-                            {{technology.index}} - {{ technology.label }} <i class="icon-remove" ng-click="removeTech(category, technology)"></i></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid title-wrapper">
+  <div class="row">
+    <div class="col-sm-8 column">
+      <h1 class="title">Technical Radar</h1>
     </div>
+    <div class="col-sm-4 column">
+      <div class="radar-quadrant-navigation" id="radar">
+        <ul class="radar-quadrant-navigation__radar-quadrants">
+
+          <li class="radar-quadrant-navigation__quadrant">
+            <a class="radar-pie radar3 selected" href="javascript:void(0);">Frameworks &amp;<br> Libraries</a>
+          </li>
+          <li class="radar-quadrant-navigation__quadrant">
+            <a class="radar-pie radar0" href="javascript:void(0);">Tools</a>
+          </li>
+          <li class="radar-quadrant-navigation__quadrant">
+            <a class="radar-pie radar2" href="javascript:void(0);">Platforms</a>
+          </li>
+          <li class="radar-quadrant-navigation__quadrant">
+            <a class="radar-pie radar1" href="javascript:void(0);">Techniques &amp;<br> Languages</a>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4 radar-manager">
+
+      <div class="group" ng-repeat="group in radarTechList">
+        <div ng-show="group.label == groupActive " class="techList techList-{{ group.label.replace(' & ', '') }}">
+          <h3 style="display: inline;">
+            <span class="dot platforms" style="color: {{group.color}}">●</span> {{group.group }}
+          </h3>
+
+          <ul>
+            <li ng-repeat="technology in group.technologies" ng-class="{'active-tech': technology.active}">
+              {{technology.index}} - {{ technology.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!--<div ng-repeat="status in radarData">
+        <div class="category" ng-repeat="category in status.categories">
+          <h3 style="display: inline;"><span class="dot platforms" style="color: {{category.color}}">●</span> {{ status.label  }}</h3>
+
+          <ul>
+            <li ng-repeat="technology in category.technologies">
+              {{technology.index}} - {{ technology.label }} - {{ category.label  }}
+            </li>
+          </ul>
+        </div>
+      </div>-->
+    </div>
+    <div class="col-sm-4" style="text-align: left;">
+      <!--  <span class="mouseover-title">
+            <h3>{{activeCategory.label}}</h3>
+            <h4>{{activeStatus.label}}</h4>
+        </span>-->
+      <radar-diagram height="480" width="480"/>
+    </div>
+    <div class="col-sm-2"></div>
+
+  </div>
+</div>
+
