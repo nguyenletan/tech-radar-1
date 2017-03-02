@@ -49,7 +49,6 @@ input[type="text"].input-small {
 
 .radar-manager ul {
   list-style-type: none;
-  margin: 5px;
 }
 
 .new-category {
@@ -72,26 +71,59 @@ input[type="text"].input-small {
   font-weight: bold;
   background-color: teal;
   color: #FFF;
-  transition: all 1s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
-.techList-Platforms .active-tech{
-  background-color: #f38a3e;
+.group-Core {
+  .techList-Platforms .active-tech {
+    background-color: #D91500;
+  }
+  .techList-FrameworksLibraries .active-tech {
+    background-color: #006485;
+  }
+
+  .techList-Tools .active-tech {
+    background-color: #246020;
+  }
+
+  .techList-TechniquesLanguages .active-tech {
+    background-color: #5b000a;
+  }
 }
 
-.techList-FrameworksLibraries .active-tech{
-  background-color: #1ebccd;
+.group-Non-Core {
+  .techList-Platforms .active-tech {
+    background-color: #EB4A0A;
+  }
+  .techList-FrameworksLibraries .active-tech {
+    background-color: #0089a5;
+  }
+
+  .techList-Tools .active-tech {
+    background-color: #458540;
+  }
+
+  .techList-TechniquesLanguages .active-tech {
+    background-color: #80031e;
+  }
 }
 
-.techList-Tools .active-tech{
-  background-color: #86b782;
+.group-Adopting {
+  .techList-Platforms .active-tech {
+    background-color: #F38A3E;
+  }
+  .techList-FrameworksLibraries .active-tech {
+    background-color: #1ebccd;
+  }
+
+  .techList-Tools .active-tech {
+    background-color: #86B782;
+  }
+
+  .techList-TechniquesLanguages .active-tech {
+    background-color: #B32059;
+  }
 }
-
-.techList-TechniquesLanguages .active-tech{
-  background-color: #b32059;
-}
-
-
 
 .category {
   padding: 5px;
@@ -200,8 +232,7 @@ input[type="text"].input-small {
 }
 
 .title-wrapper {
-  margin-bottom: 25px;
-  margin-left: 0;
+  margin-bottom: 20px;
   background-color: #EEE;
   .column {
     padding-right: 0;
@@ -231,15 +262,18 @@ input[type="text"].input-small {
   color: #000;
   cursor: pointer;
   font-size: 12px;
-  li {
-    padding: 0 5px;
-    line-height: 1.8em;
+  ul {
+    -webkit-padding-start: 0px;
+
+    li {
+      padding: 0 5px;
+      line-height: 1.8em;
+    }
   }
 
 }
 
 h3 {
-  padding-left: 10px;
   line-height: 30px;
   margin: 0;
   color: #000;

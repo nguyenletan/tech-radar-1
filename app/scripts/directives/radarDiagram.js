@@ -205,6 +205,10 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           .datum(function (category, categoryIndex) {
 
             category.color = colorPattern[0][categoryIndex];
+            category.colors = [];
+            category.colors[0] = colorPattern[0][categoryIndex];
+            category.colors[1] = colorPattern[1][categoryIndex];
+            category.colors[2] = colorPattern[2][categoryIndex];
 
             return category;
           })
@@ -263,10 +267,10 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           });
           techEnter.append("text")
             .text(function (d) {
-              return d.index;//getTechLabelSubstring(d.label);
+              return (d.index + 1);//getTechLabelSubstring(d.label);
             })
             .attr('x', function (d) {
-              return parseInt(d.index) > 9 ? d.x - 6 : d.x - 3;
+              return parseInt(d.index) > 8 ? d.x - 6 : d.x - 3;
             })
             .attr('y', function (d) {
               return d.y + 3.5;
@@ -317,7 +321,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
               var interpolationFunction = d.active ? interpolateText : reverseInterpolateText;
               var i = interpolationFunction(d.label, Math.min(this.textContent.length, truncatedLabelLength), d.index);
               return function (t) {
-                node.textContent = i(t);
+                node.textContent = d.active ? i(t) : i(t) + 1;
                 node.fill = 'white';//d.active ? 'white' : 'black';
 
               };

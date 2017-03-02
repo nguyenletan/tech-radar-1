@@ -18,9 +18,9 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               {"label": "Express"},
               {"label": "Redis"},
               {"label": "Ehcache"},
-              {"label": "jUnit/NUnit/PHPUnit/OCUnit"},
+              {"label": "jUnit - NUnit - PHPUnit - OCUnit"},
               {"label": "Appium"},
-              {"label": "Composer/Nuget/Npm/Yarn"},
+              {"label": "Composer - Nuget - Npm - Yarn"},
               {"label": "Nginx"},
               {"label": "Jenkin"},
               {"label": "Grunt/Gulp"},
@@ -257,19 +257,14 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       if (1) {
         var categories = _.flatten(_.pluck(radar.data, 'categories'));
         //categories = _.where(categories, {label: this.categoryName});
+
         for (var i = 0, n = categories.length; i < n; i++) {
-          switch(i % 3){
-            case 2:
-              categories[i].group = 'Adopting';
-              break;
-            case 1:
-              categories[i].group = 'Non-Core';
-              break;
-            case 0:
-              categories[i].group = 'Core';
-              break;
-            default:
-              break;
+          if(i < 4){
+            categories[i].group = 'Core';
+          } else if( i < 8){
+            categories[i].group = 'Non-Core';
+          } else {
+            categories[i].group = 'Adopting';
           }
         }
 
