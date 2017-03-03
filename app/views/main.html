@@ -37,7 +37,7 @@
           <div class="group  group-{{ group.group }}" ng-repeat="group in radarTechList | filter: {group: 'Adopting'}">
             <div ng-show="group.label == groupActive" class="techList techList-{{ group.label.replace(' & ', '') }}">
               <h3 style="display: inline;">
-                <span class="dot platforms" style="color: {{group.colors[2]}}">●</span> {{group.group }}
+                <span class="dot platforms" style="color: {{group.colors[2]}}">●</span><span class="techname"> {{group.group }}</span>
               </h3>
 
               <ul>
@@ -54,7 +54,7 @@
           <div class="group group-{{ group.group }}" ng-repeat="group in radarTechList | filter: {group: 'Non-Core'}">
             <div ng-show="group.label == groupActive" class="techList techList-{{ group.label.replace(' & ', '') }}">
               <h3 style="display: inline;">
-                <span class="dot platforms" style="color: {{group.colors[1]}}">●</span> {{group.group }}
+                <span class="dot platforms" style="color: {{group.colors[1]}}">●</span><span class="techname"> {{group.group }}</span>
               </h3>
 
               <ul>
@@ -73,7 +73,7 @@
             <div ng-show="group.label == groupActive"
                  class="techList techList-{{ group.label.replace(' & ', '') }}">
               <h3 style="display: inline;">
-                <span class="dot platforms" style="color: {{group.colors[0]}}">●</span> {{group.group }}
+                <span class="dot platforms" style="color: {{group.colors[0]}}">●</span><span class="techname"> {{group.group }}</span>
               </h3>
 
               <ul>

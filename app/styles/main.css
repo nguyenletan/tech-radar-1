@@ -11,7 +11,7 @@ html, body {
 /* line 23, main.scss */
 body {
   background: #FAFAFA;
-  font-family: "San Francisco", "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next","San Francisco", "Helvetica Neue", "Calibri", "Open Sans", Helvetica, Arial, sans-serif;
   /*font-family: "  Helvetica Neue", Helvetica, Arial, sans-serif;*/
   color: #333;
   font-size: 14px;
@@ -205,17 +205,22 @@ body {
 }
 
 /* line 204, main.scss */
+.dot {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* line 209, main.scss */
 .title-wrapper {
   margin-bottom: 20px;
   background-color: #EEE;
 }
 
-/* line 210, main.scss */
+/* line 214, main.scss */
 .title {
   text-align: center;
   padding-top: 20px;
-  letter-spacing: -.08em;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 60px;
   color: #333;
   display: block;
@@ -225,7 +230,7 @@ body {
   border-bottom: none;
 }
 
-/* line 224, main.scss */
+/* line 227, main.scss */
 .group {
   display: block;
   /*padding: 1em .4em 1em 20px;*/
@@ -235,19 +240,19 @@ body {
   cursor: pointer;
   font-size: 12px;
 }
-/* line 232, main.scss */
+/* line 235, main.scss */
 .group ul {
   -webkit-padding-start: 0;
   -moz-padding-start: 0;
   padding-left: 0px;
 }
-/* line 237, main.scss */
+/* line 240, main.scss */
 .group ul li {
   padding: 0 5px;
   line-height: 1.65em;
 }
 
-/* line 245, main.scss */
+/* line 247, main.scss */
 h3 {
   line-height: 30px;
   margin: 0;
