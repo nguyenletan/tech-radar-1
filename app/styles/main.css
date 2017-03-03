@@ -239,14 +239,15 @@ body {
 .group ul {
   -webkit-padding-start: 0;
   -moz-padding-start: 0;
+  padding-left: 0px;
 }
-/* line 236, main.scss */
+/* line 237, main.scss */
 .group ul li {
   padding: 0 5px;
   line-height: 1.65em;
 }
 
-/* line 244, main.scss */
+/* line 245, main.scss */
 h3 {
   line-height: 30px;
   margin: 0;
