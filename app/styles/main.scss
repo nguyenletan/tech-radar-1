@@ -22,7 +22,7 @@ html, body {
 
 body {
   background: #FAFAFA;
-  font-family: "San Francisco", "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next","San Francisco", "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;
   /*font-family: "  Helvetica Neue", Helvetica, Arial, sans-serif;*/
   color: #333;
   font-size: 14px;
@@ -201,17 +201,24 @@ body {
   background-image: url($imgRadar3);
 }
 
+.dot {
+  line-height: 30px;
+  margin: 0;
+  color: #000;
+  font-size: 22px;
+  font-weight: 700;
+  vertical-align: top;
+}
+
 .title-wrapper {
   margin-bottom: 20px;
   background-color: #EEE;
-
 }
 
 .title {
   text-align: center;
   padding-top: 20px;
-  letter-spacing: -.08em;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 60px;
   color: #333;
   display: block;
@@ -238,7 +245,6 @@ body {
       line-height: 1.65em;
     }
   }
-
 }
 
 h3 {

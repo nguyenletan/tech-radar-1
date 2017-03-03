@@ -6,7 +6,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
     function Radar(data) {
       //this.data = defaultData;
 
-      window.temp = this.data = [
+      this.data = [
         {
           label: "Core",
           categories: [{

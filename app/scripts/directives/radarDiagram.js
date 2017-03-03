@@ -270,7 +270,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
               return (d.index + 1);//getTechLabelSubstring(d.label);
             })
             .attr('x', function (d) {
-              return parseInt(d.index) > 8 ? d.x - 6 : d.x - 3;
+              return parseInt(d.index) > 8 ? d.x - 7 : d.x - 3;
             })
             .attr('y', function (d) {
               return d.y + 3.5;
