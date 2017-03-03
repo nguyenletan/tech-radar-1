@@ -9,3 +9,5 @@ app/bower_components
 *.ipr
 *.iws
 .idea/
+.DS_Store
+/app/styles/main.css
