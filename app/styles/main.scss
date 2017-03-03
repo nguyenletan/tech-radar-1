@@ -14,7 +14,6 @@ $imgRadarInactive3: '../images/menu_quadrant_3--inactive.png';
 
 /* Put your CSS here */
 html, body {
-  //margin: 20px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,8 +21,7 @@ html, body {
 
 body {
   background: #FAFAFA;
-  font-family: "Avenir Next","San Francisco", "Helvetica Neue", "Calibri", "Open Sans", Helvetica, Arial, sans-serif;
-  /*font-family: "  Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: "Avenir Next","San Francisco", "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;
   color: #333;
   font-size: 14px;
 }
@@ -163,7 +161,6 @@ body {
   background-position: top left;
   background-image: url($imgRadarInactive1);
   padding: 21px 0;
-  //background-image: url(/imgs/radar/secondary_navigation_quadrant/menu_quadrant_tools--inactive.png);
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1.selected,
@@ -226,8 +223,6 @@ body {
 
 .group {
   display: block;
-  /*padding: 1em .4em 1em 20px;*/
-  /*line-height: 1.15em;*/
   text-decoration: none;
   color: #000;
   cursor: pointer;
