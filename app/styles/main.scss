@@ -15,63 +15,32 @@ $imgRadarInactive3: '../images/menu_quadrant_3--inactive.png';
 /* Put your CSS here */
 html, body {
   //margin: 20px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: #FAFAFA;
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "San Francisco", "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;
   /*font-family: "  Helvetica Neue", Helvetica, Arial, sans-serif;*/
   color: #333;
-}
-
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #EEE;
-  border-radius: 6px;
-  padding: 60px;
-}
-
-.hero-unit h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-input[type="text"].input-small {
-  height: 10px;
-  font-size: 9pt;
-  line-height: 10px;
+  font-size: 14px;
 }
 
 .radar-manager ul {
   list-style-type: none;
 }
 
-.new-category {
-  max-height: 25px;
-  font-size: 8pt;
-  float: right;
-  padding-right: 10px;
-  margin: 0;
-}
-
-.new-category a {
-  float: right;
-}
-
-.new-category input {
-  margin-right: 10px;
+.no-col-padding-right {
+  padding-right: 0;
 }
 
 .active-tech {
   font-weight: bold;
   background-color: teal;
-  color: #FFF;
-  transition: all .5s ease-in-out;
+  color: #FAFAFA;
+  transition: all .7s ease-in-out;
 }
 
 .group-Core {
@@ -142,7 +111,7 @@ input[type="text"].input-small {
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants {
   display: block;
-  background-color: #FFF;
+  background-color: #FAFAFA;
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -162,7 +131,7 @@ input[type="text"].input-small {
   border-bottom: none;
   box-sizing: border-box;
   height: 75px;
-  color: #FFF;
+  color: #FAFAFA;
   display: block;
   vertical-align: middle;
   line-height: 1em;
@@ -193,6 +162,7 @@ input[type="text"].input-small {
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1 {
   background-position: top left;
   background-image: url($imgRadarInactive1);
+  padding: 21px 0;
   //background-image: url(/imgs/radar/secondary_navigation_quadrant/menu_quadrant_tools--inactive.png);
 }
 
@@ -207,7 +177,6 @@ input[type="text"].input-small {
   border-right: 1px solid #EEE;
   background-position: top right;
   background-image: url($imgRadarInactive2);
-  //background-image: url(/imgs/radar/secondary_navigation_quadrant/menu_quadrant_platforms--inactive.png);
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2.selected,
@@ -222,6 +191,7 @@ input[type="text"].input-small {
   border-right: 1px solid #EEE;
   background-position: bottom right;
   background-image: url($imgRadarInactive3);
+  padding: 21px 0;
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3.selected,
@@ -234,10 +204,7 @@ input[type="text"].input-small {
 .title-wrapper {
   margin-bottom: 20px;
   background-color: #EEE;
-  .column {
-    padding-right: 0;
-    padding-left: 0;
-  }
+
 }
 
 .title {
@@ -257,17 +224,18 @@ input[type="text"].input-small {
 .group {
   display: block;
   /*padding: 1em .4em 1em 20px;*/
-  line-height: 1.15em;
+  /*line-height: 1.15em;*/
   text-decoration: none;
   color: #000;
   cursor: pointer;
   font-size: 12px;
   ul {
-    -webkit-padding-start: 0px;
+    -webkit-padding-start: 0;
+    -moz-padding-start: 0;
 
     li {
       padding: 0 5px;
-      line-height: 1.8em;
+      line-height: 1.65em;
     }
   }
 

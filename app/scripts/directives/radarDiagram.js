@@ -46,7 +46,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           .startAngle(0)
           .endAngle(Math.PI * 2);
         //arc();
-        var arcSize = 480;
+        var arcSize = 555;
         var pieWidth, pieHeight;
         switch (pieNumber) {
           case 0:
