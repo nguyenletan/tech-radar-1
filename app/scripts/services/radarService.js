@@ -46,8 +46,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                 {"label": "Responsive web design"},
                 {"label": "OOP"},
                 {"label": "Go"},
-                {"label": "Swift/Objective C"},
-                {"label": "Typescript"}
+                {"label": "Swift/Objective C"}
               ]
             },
             {
@@ -63,7 +62,6 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                 {"label": "Wordpress"},
                 {"label": "Phonegap/Cordova"},
                 {"label": "Windows server"},
-                {"label": "ADO.NET"},
                 {"label": "Cocoa"},
               ]
             },
@@ -96,7 +94,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               {"label": "TeamCity"},
               {"label": "MVSTS"},
               {"label": "RedGate Ant"},
-              {"label": "ASP.NET Web Forms"},
+              {"label": " BizTalk"},
               {"label": "Websphere MQ"},
               {"label": "ActiveMQ"},
               {"label": "HornetMQ"},
@@ -104,7 +102,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               {"label": "OSGI Platform"},
               {"label": "Spring Integration"},
               {"label": "Oracle SOA/ESB"},
-              {"label": "Mule Soft"},
+              {"label": "Mule ESB"},
               {"label": "MemCache"},
               {"label": "JBoss AS"},
               {"label": "Glassfish"},
@@ -129,7 +127,8 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                 {"label": "Scala/Lift"},
                 {"label": "Groovy"},
                 {"label": "Ruby"},
-                {"label": "Python"}
+                {"label": "Python"},
+                {"label": "Typescript"}
               ]
             },
             {
@@ -151,7 +150,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                 {"label": "Drupal"},
                 {"label": "Magento"},
                 {"label": "Moodle"},
-                {"label": "Amazone Cloud"},
+                {"label": "Amazon Web Services"},
                 {"label": "Xamarin"},
               ]
             },
@@ -160,16 +159,14 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               label: 'Frameworks & Libraries',
               technologies: [
                 {"label": "ASP.NET Web Forms"},
-                {"label": "Entity Framework Core"},
                 {"label": "Swing/JavaFX"},
                 {"label": "Struts"},
                 {"label": "JSF"},
                 {"label": "Vaadin"},
-                {"label": "Mule ESB"},
                 {"label": "WSO2"},
                 {"label": "Apache Camel"},
                 {"label": "KendoUI"},
-                {"label": "D3"},
+                {"label": "D3.js"},
                 {"label": "Lavarel"},
                 {"label": "Zend"},
                 {"label": "Yii"},
@@ -194,7 +191,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
             {
               label: 'Techniques & Languages',
               technologies: [
-                {"label": "Go/Go lang"}
+                {"label": "F#"}
 
               ]
             },
@@ -207,6 +204,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
             },
             {
               label: 'Frameworks & Libraries', technologies: [
+              {"label": "Entity Framework Core"},
               {"label": "ReactJs"},
               {"label": "React Native"},
               {"label": "ASP.NET Core"},
