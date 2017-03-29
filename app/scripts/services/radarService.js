@@ -191,15 +191,19 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
             {
               label: 'Techniques & Languages',
               technologies: [
-                {"label": "F#"}
-
+                {"label": "F#"},
+                {"label": "Microservices"},
+                {"label": "Mixed Reality"}
               ]
             },
             {
               label: 'Platforms', technologies: [
               {"label": "Universal Windows App"},
               {"label": ".Net Core"},
-              {"label": "Spring Cloud"}
+              {"label": "Spring Cloud"},
+              {"label": "Blockchain"},
+              {"label": "IoT"},
+              {"label": "Big Data"},
             ]
             },
             {
@@ -210,7 +214,10 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               {"label": "ASP.NET Core"},
               {"label": "Angular2"},
               {"label": "Lift"},
-              {"label": "VueJs"}
+              {"label": "VueJs"},
+              {"label": "Machine Learning"},
+              {"label": "Tensorflow"}
+
             ]
             },
           ]
@@ -239,7 +246,6 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
     };
 
-
     var radarData = localStorageWatcher.syncWithLocalStorage(LOCAL_STORAGE_ID, this.data);
 
     var radar = new Radar(radarData);
@@ -266,7 +272,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
           }
         }
 
-        console.log(categories);
+        //console.log(categories);
 
         result = categories;
 
@@ -288,7 +294,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       groupActive: 'Frameworks & Libraries',
       techList: getTechListByCategoryName()
     };
-    console.log(o);
+    //console.log(o);
     return o;
   }
 

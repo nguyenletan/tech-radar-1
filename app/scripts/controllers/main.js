@@ -23,6 +23,21 @@ angular.module('techRadarApp')
     $scope.removeTech = function(category, tech) {
         category.technologies = _.without(category.technologies, tech);
     };
+
+    $scope.highlightTechLabel = function(tech, isHighlight){
+      if(tech !== undefined && isHighlight !== undefined){
+        tech.active =  isHighlight;
+        $scope.technologies.each(function (d) {
+          if(d.label === tech.label) {
+            d.active = isHighlight;
+            $scope.redrawTechCircles($scope.technologies, false);
+          }
+        });
+      }
+    }
+
+
+
   /*  $scope.$watch('groupActive' ,function(data){
 
       return;

@@ -42,7 +42,10 @@
 
               <ul>
                 <li ng-repeat="technology in group.technologies"
-                    ng-class="{'active-tech': technology.active}">
+                    ng-mouseleave="highlightTechLabel(technology, false)"
+                    ng-mouseover="highlightTechLabel(technology, true)"
+                    ng-class="{'active-tech': technology.active}"
+                    rel="{{ technology.label }}">
                   {{technology.index + 1}}. {{ technology.label }}
                 </li>
               </ul>
@@ -59,7 +62,10 @@
 
               <ul>
                 <li ng-repeat="technology in group.technologies"
-                    ng-class="{'active-tech': technology.active}">
+                    ng-mouseleave="highlightTechLabel(technology, false)"
+                    ng-mouseover="highlightTechLabel(technology, true)"
+                    ng-class="{'active-tech': technology.active}"
+                    rel="{{ technology.label }}">
                   {{technology.index + 1}}. {{ technology.label }}
                 </li>
               </ul>
@@ -78,7 +84,10 @@
 
               <ul>
                 <li ng-repeat="technology in group.technologies"
-                    ng-class="{'active-tech': technology.active}">
+                    ng-mouseleave="highlightTechLabel(technology, false)"
+                    ng-mouseover="highlightTechLabel(technology, true)"
+                    ng-class="{'active-tech': technology.active}"
+                    rel="{{ technology.label }}">
                   {{technology.index + 1}}. {{ technology.label }}
                 </li>
               </ul>
