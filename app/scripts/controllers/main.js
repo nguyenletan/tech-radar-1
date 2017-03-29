@@ -30,7 +30,7 @@ angular.module('techRadarApp')
         $scope.technologies.each(function (d) {
           if(d.label === tech.label) {
             d.active = isHighlight;
-            $scope.redrawTechCircles($scope.technologies, false);
+            $scope.redrawTechCircles($scope.technologies, true);
           }
         });
       }
