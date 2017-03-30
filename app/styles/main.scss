@@ -35,59 +35,95 @@ body {
 }
 
 .active-tech {
-  font-weight: bold;
-  background-color: teal;
+  /*font-weight: bold;*/
+
   color: #FAFAFA;
   transition: all .7s ease-in-out;
 }
 
+.radar-movement {
+  display: inline;
+  padding: 0 4px;
+  border-radius: 2px;
+  margin-left: 3px;
+  color: #162515;
+  transition: all .7s ease-in-out;
+}
+
+.techList-Platforms .radar-movement{
+  background-color: rgba(243,138,62,.3);
+}
+
+.techList-FrameworksLibraries .radar-movement {
+  background-color: rgba(30,188,205,.3);
+}
+
+.techList-Tools .radar-movement {
+  background-color: rgba(134,183,130,.3);
+}
+
+.techList-TechniquesLanguages .radar-movement {
+  background-color: rgba(179,32,89,.3);
+}
+//rgba(243,138,62,.3)
+.active-tech .radar-movement {
+  background-color: white!important;
+  color: black !important;
+  /*font-weight: bold;*/
+}
+
+.tech-label {
+  padding: 0 5px;
+  line-height: 1.65em;
+}
+
 .group-Core {
-  .techList-Platforms .active-tech {
+  .techList-Platforms .active-tech .tech-label{
     background-color: #D91500;
   }
-  .techList-FrameworksLibraries .active-tech {
+  .techList-FrameworksLibraries .active-tech .tech-label{
     background-color: #006485;
   }
 
-  .techList-Tools .active-tech {
+  .techList-Tools .active-tech .tech-label{
     background-color: #246020;
   }
 
-  .techList-TechniquesLanguages .active-tech {
+  .techList-TechniquesLanguages .active-tech .tech-label{
     background-color: #5b000a;
   }
 }
 
 .group-Non-Core {
-  .techList-Platforms .active-tech {
+  .techList-Platforms .active-tech .tech-label{
     background-color: #EB4A0A;
   }
-  .techList-FrameworksLibraries .active-tech {
+  .techList-FrameworksLibraries .active-tech .tech-label{
     background-color: #0089a5;
   }
 
-  .techList-Tools .active-tech {
+  .techList-Tools .active-tech .tech-label{
     background-color: #458540;
   }
 
-  .techList-TechniquesLanguages .active-tech {
+  .techList-TechniquesLanguages .active-tech .tech-label {
     background-color: #80031e;
   }
 }
 
 .group-Adopting {
-  .techList-Platforms .active-tech {
+  .techList-Platforms .active-tech .tech-label {
     background-color: #F38A3E;
   }
-  .techList-FrameworksLibraries .active-tech {
+  .techList-FrameworksLibraries .active-tech .tech-label{
     background-color: #1ebccd;
   }
 
-  .techList-Tools .active-tech {
+  .techList-Tools .active-tech .tech-label{
     background-color: #86B782;
   }
 
-  .techList-TechniquesLanguages .active-tech {
+  .techList-TechniquesLanguages .active-tech .tech-label {
     background-color: #B32059;
   }
 }
@@ -226,7 +262,7 @@ body {
   text-decoration: none;
   color: #000;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   ul {
     -webkit-padding-start: 0;
     -moz-padding-start: 0;
@@ -247,3 +283,17 @@ h3 {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+.tech-description {
+  border-top: solid 1px #999;
+  border-bottom: solid 1px #999;
+  margin-bottom: 5px;
+  padding: 5px 0 5px 10px;
+  color: #555 !important;
+  p{
+    margin-bottom: 5px;
+  }
+}
+
+
+

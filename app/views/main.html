@@ -39,14 +39,23 @@
               <h3 style="display: inline;">
                 <span class="dot platforms" style="color: {{group.colors[2]}}">●</span><span class="techname"> {{group.group }}</span>
               </h3>
-
               <ul>
                 <li ng-repeat="technology in group.technologies"
+                    ng-click="technology.showDetail = !technology.showDetail"
                     ng-mouseleave="highlightTechLabel(technology, false)"
                     ng-mouseover="highlightTechLabel(technology, true)"
                     ng-class="{'active-tech': technology.active}"
                     rel="{{ technology.label }}">
-                  {{technology.index + 1}}. {{ technology.label }}
+                  <div class="tech-label">
+                    {{technology.index + 1}}. {{ technology.label }}
+                    <span ng-show="technology.isNew" class="radar-movement">new</span>
+                  </div>
+
+                  <div class="tech-description" ng-show="technology.showDetail">
+                    <p class="number-of-SE"><span>&bullet;&nbsp;SE:&nbsp;</span>{{ technology.numberOfSE }}</p>
+                    <p class="number-of-SSE"><span>&bullet;&nbsp;SSE:&nbsp;</span>{{ technology.numberOfSSE }}</p>
+                    <p class="number-of-PSE"><span>&bullet;&nbsp;PSE:&nbsp;</span>{{ technology.numberOfPSE }}</p>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -62,11 +71,21 @@
 
               <ul>
                 <li ng-repeat="technology in group.technologies"
+                    ng-click="technology.showDetail = !technology.showDetail"
                     ng-mouseleave="highlightTechLabel(technology, false)"
                     ng-mouseover="highlightTechLabel(technology, true)"
                     ng-class="{'active-tech': technology.active}"
                     rel="{{ technology.label }}">
-                  {{technology.index + 1}}. {{ technology.label }}
+
+                  <div class="tech-label">
+                    {{technology.index + 1}}. {{ technology.label }}
+                    <span ng-show="technology.isNew" class="radar-movement">new</span>
+                  </div>
+                  <div class="tech-description" ng-show="technology.showDetail">
+                    <p class="number-of-SE"><span>&bullet;&nbsp;SE:&nbsp;</span>{{ technology.numberOfSE }}</p>
+                    <p class="number-of-SSE"><span>&bullet;&nbsp;SSE:&nbsp;</span>{{ technology.numberOfSSE }}</p>
+                    <p class="number-of-PSE"><span>&bullet;&nbsp;PSE:&nbsp;</span>{{ technology.numberOfPSE }}</p>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -84,11 +103,20 @@
 
               <ul>
                 <li ng-repeat="technology in group.technologies"
+                    ng-click="technology.showDetail = !technology.showDetail"
                     ng-mouseleave="highlightTechLabel(technology, false)"
                     ng-mouseover="highlightTechLabel(technology, true)"
                     ng-class="{'active-tech': technology.active}"
                     rel="{{ technology.label }}">
-                  {{technology.index + 1}}. {{ technology.label }}
+                  <div class="tech-label">
+                    {{technology.index + 1}}. {{ technology.label }}
+                    <span ng-show="technology.isNew" class="radar-movement">new</span>
+                  </div>
+                  <div class="tech-description" ng-show="technology.showDetail">
+                    <p class="number-of-SE"><span>&bullet;&nbsp;SE:&nbsp;</span>{{ technology.numberOfSE }}</p>
+                    <p class="number-of-SSE"><span>&bullet;&nbsp;SSE:&nbsp;</span>{{ technology.numberOfSSE }}</p>
+                    <p class="number-of-PSE"><span>&bullet;&nbsp;PSE:&nbsp;</span>{{ technology.numberOfPSE }}</p>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -98,7 +126,7 @@
       </div>
 
     </div>
-    <div class="col-sm-6 no-col-padding-right" style="text-align: right;" >
+    <div class="col-sm-6 no-col-padding-right" style="text-align: right;">
       <!--  <span class="mouseover-title">
             <h3>{{activeCategory.label}}</h3>
             <h4>{{activeStatus.label}}</h4>
