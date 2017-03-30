@@ -221,7 +221,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               {"label": "Blockchain", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               {"label": "IoT", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               {"label": "Big Data", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "JAMstack:", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+              {"label": "JAMstack", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
             ]
             },
             {
