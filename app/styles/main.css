@@ -72,79 +72,80 @@ body {
 
 /* line 75, main.scss */
 .tech-label {
-  padding: 0 5px;
+  padding: 1px 5px;
   line-height: 1.65em;
+  border-radius: 3px;
 }
 
-/* line 81, main.scss */
+/* line 82, main.scss */
 .group-Core .techList-Platforms .active-tech .tech-label {
   background-color: #D91500;
 }
-/* line 84, main.scss */
+/* line 85, main.scss */
 .group-Core .techList-FrameworksLibraries .active-tech .tech-label {
   background-color: #006485;
 }
-/* line 88, main.scss */
+/* line 89, main.scss */
 .group-Core .techList-Tools .active-tech .tech-label {
   background-color: #246020;
 }
-/* line 92, main.scss */
+/* line 93, main.scss */
 .group-Core .techList-TechniquesLanguages .active-tech .tech-label {
   background-color: #5b000a;
 }
 
-/* line 98, main.scss */
+/* line 99, main.scss */
 .group-Non-Core .techList-Platforms .active-tech .tech-label {
   background-color: #EB4A0A;
 }
-/* line 101, main.scss */
+/* line 102, main.scss */
 .group-Non-Core .techList-FrameworksLibraries .active-tech .tech-label {
   background-color: #0089a5;
 }
-/* line 105, main.scss */
+/* line 106, main.scss */
 .group-Non-Core .techList-Tools .active-tech .tech-label {
   background-color: #458540;
 }
-/* line 109, main.scss */
+/* line 110, main.scss */
 .group-Non-Core .techList-TechniquesLanguages .active-tech .tech-label {
   background-color: #80031e;
 }
 
-/* line 115, main.scss */
+/* line 116, main.scss */
 .group-Adopting .techList-Platforms .active-tech .tech-label {
   background-color: #F38A3E;
 }
-/* line 118, main.scss */
+/* line 119, main.scss */
 .group-Adopting .techList-FrameworksLibraries .active-tech .tech-label {
   background-color: #1ebccd;
 }
-/* line 122, main.scss */
+/* line 123, main.scss */
 .group-Adopting .techList-Tools .active-tech .tech-label {
   background-color: #86B782;
 }
-/* line 126, main.scss */
+/* line 127, main.scss */
 .group-Adopting .techList-TechniquesLanguages .active-tech .tech-label {
   background-color: #B32059;
 }
 
-/* line 131, main.scss */
+/* line 132, main.scss */
 .category {
   padding: 5px;
   margin-bottom: 5px;
 }
 
-/* line 137, main.scss */
+/* line 138, main.scss */
 .mouseover-title {
   position: absolute;
   color: slategrey;
 }
 
-/* line 142, main.scss */
+/* line 143, main.scss */
 .radar-quadrant-navigation {
   list-style-type: none !important;
 }
 
-/* line 146, main.scss */
+/* line 147, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants {
   display: block;
   background-color: #FAFAFA;
@@ -153,7 +154,7 @@ body {
   overflow: hidden;
 }
 
-/* line 154, main.scss */
+/* line 155, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant {
   box-sizing: border-box;
   width: 50%;
@@ -164,7 +165,7 @@ body {
   vertical-align: middle;
 }
 
-/* line 164, main.scss */
+/* line 165, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a {
   border-bottom: none;
   box-sizing: border-box;
@@ -181,7 +182,7 @@ body {
   padding: 28px 0;
 }
 
-/* line 180, main.scss */
+/* line 181, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0 {
   border-top: 0;
   border-bottom: 1px solid #EEE;
@@ -190,7 +191,7 @@ body {
   /*background-image: url(/imgs/radar/secondary_navigation_quadrant/menu_quadrant_techniques--inactive.png);*/
 }
 
-/* line 189, main.scss */
+/* line 190, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0.selected,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0:hover {
@@ -198,14 +199,14 @@ body {
   background-image: url("../images/menu_quadrant_0.png");
 }
 
-/* line 196, main.scss */
+/* line 197, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1 {
   background-position: top left;
   background-image: url("../images/menu_quadrant_1--inactive.png");
   padding: 21px 0;
 }
 
-/* line 202, main.scss */
+/* line 203, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1.selected,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1:hover {
@@ -213,14 +214,14 @@ body {
   background-image: url("../images/menu_quadrant_1.png");
 }
 
-/* line 209, main.scss */
+/* line 210, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2 {
   border-right: 1px solid #EEE;
   background-position: top right;
   background-image: url("../images/menu_quadrant_2--inactive.png");
 }
 
-/* line 215, main.scss */
+/* line 216, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2.selected,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2:hover {
@@ -228,7 +229,7 @@ body {
   background-image: url("../images/menu_quadrant_2.png");
 }
 
-/* line 222, main.scss */
+/* line 223, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3 {
   border-bottom: 1px solid #EEE;
   border-right: 1px solid #EEE;
@@ -237,7 +238,7 @@ body {
   padding: 21px 0;
 }
 
-/* line 230, main.scss */
+/* line 231, main.scss */
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3.selected,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3:hover {
@@ -245,19 +246,19 @@ body {
   background-image: url("../images/menu_quadrant_3.png");
 }
 
-/* line 237, main.scss */
+/* line 238, main.scss */
 .dot {
   font-size: 18px;
   font-weight: 700;
 }
 
-/* line 242, main.scss */
+/* line 243, main.scss */
 .title-wrapper {
   margin-bottom: 20px;
   background-color: #EEE;
 }
 
-/* line 247, main.scss */
+/* line 248, main.scss */
 .title {
   text-align: center;
   padding-top: 20px;
@@ -271,7 +272,7 @@ body {
   border-bottom: none;
 }
 
-/* line 260, main.scss */
+/* line 261, main.scss */
 .group {
   display: block;
   text-decoration: none;
@@ -279,19 +280,19 @@ body {
   cursor: pointer;
   font-size: 13px;
 }
-/* line 266, main.scss */
+/* line 267, main.scss */
 .group ul {
   -webkit-padding-start: 0;
   -moz-padding-start: 0;
   padding-left: 0px;
 }
-/* line 271, main.scss */
+/* line 272, main.scss */
 .group ul li {
   padding: 0 5px;
   line-height: 1.65em;
 }
 
-/* line 278, main.scss */
+/* line 279, main.scss */
 h3 {
   line-height: 30px;
   margin: 0;
@@ -301,7 +302,7 @@ h3 {
   text-transform: uppercase;
 }
 
-/* line 287, main.scss */
+/* line 288, main.scss */
 .tech-description {
   border-top: solid 1px #999;
   border-bottom: solid 1px #999;
@@ -309,7 +310,7 @@ h3 {
   padding: 5px 0 5px 10px;
   color: #555 !important;
 }
-/* line 293, main.scss */
+/* line 294, main.scss */
 .tech-description p {
   margin-bottom: 5px;
 }
