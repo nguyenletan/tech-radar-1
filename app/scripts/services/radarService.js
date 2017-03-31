@@ -230,7 +230,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
               {"label": "ReactJs", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               {"label": "React Native", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               {"label": "ASP.NET Core", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Angular2", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+              {"label": "Angular4", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               {"label": "Lift", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               {"label": "VueJs", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               {"label": "Machine Learning", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
