@@ -21,10 +21,12 @@ html, body {
 
 body {
   background: #FAFAFA;
-  font-family: "Avenir Next","San Francisco", "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next", "San Francisco", "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;
   color: #333;
   font-size: 14px;
 }
+
+
 
 .radar-manager ul {
   list-style-type: none;
@@ -50,24 +52,25 @@ body {
   transition: all .7s ease-in-out;
 }
 
-.techList-Platforms .radar-movement{
-  background-color: rgba(243,138,62,.3);
+.techList-Platforms .radar-movement {
+  background-color: rgba(243, 138, 62, .3);
 }
 
 .techList-FrameworksLibraries .radar-movement {
-  background-color: rgba(30,188,205,.3);
+  background-color: rgba(30, 188, 205, .3);
 }
 
 .techList-Tools .radar-movement {
-  background-color: rgba(134,183,130,.3);
+  background-color: rgba(134, 183, 130, .3);
 }
 
 .techList-TechniquesLanguages .radar-movement {
-  background-color: rgba(179,32,89,.3);
+  background-color: rgba(179, 32, 89, .3);
 }
+
 //rgba(243,138,62,.3)
 .active-tech .radar-movement {
-  background-color: white!important;
+  background-color: white !important;
   color: black !important;
   /*font-weight: bold;*/
 }
@@ -79,36 +82,36 @@ body {
 }
 
 .group-Core {
-  .techList-Platforms .active-tech .tech-label{
+  .techList-Platforms .active-tech .tech-label {
     background-color: #D91500;
   }
-  .techList-FrameworksLibraries .active-tech .tech-label{
+  .techList-FrameworksLibraries .active-tech .tech-label {
     background-color: #006485;
   }
 
-  .techList-Tools .active-tech .tech-label{
+  .techList-Tools .active-tech .tech-label {
     background-color: #246020;
   }
 
-  .techList-TechniquesLanguages .active-tech .tech-label{
-    background-color: #5b000a;
+  .techList-TechniquesLanguages .active-tech .tech-label {
+    background-color: #5B000A;
   }
 }
 
 .group-Non-Core {
-  .techList-Platforms .active-tech .tech-label{
+  .techList-Platforms .active-tech .tech-label {
     background-color: #EB4A0A;
   }
-  .techList-FrameworksLibraries .active-tech .tech-label{
-    background-color: #0089a5;
+  .techList-FrameworksLibraries .active-tech .tech-label {
+    background-color: #0089A5;
   }
 
-  .techList-Tools .active-tech .tech-label{
+  .techList-Tools .active-tech .tech-label {
     background-color: #458540;
   }
 
   .techList-TechniquesLanguages .active-tech .tech-label {
-    background-color: #80031e;
+    background-color: #80031E;
   }
 }
 
@@ -116,11 +119,11 @@ body {
   .techList-Platforms .active-tech .tech-label {
     background-color: #F38A3E;
   }
-  .techList-FrameworksLibraries .active-tech .tech-label{
-    background-color: #1ebccd;
+  .techList-FrameworksLibraries .active-tech .tech-label {
+    background-color: #1EBCCD;
   }
 
-  .techList-Tools .active-tech .tech-label{
+  .techList-Tools .active-tech .tech-label {
     background-color: #86B782;
   }
 
@@ -138,6 +141,223 @@ body {
 .mouseover-title {
   position: absolute;
   color: slategrey;
+}
+
+a {
+  color: #AAA;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #333;
+  outline: none;
+}
+
+.info {
+  color: #E57373;
+  font-weight: bold;
+  margin: 0;
+  padding: 1em;
+  display: none;
+}
+
+.no-preserve3d .info--support {
+  display: block;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+/* Navigation */
+
+.nav-wrapper {
+  overflow: hidden;
+  height: 118px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  min-width: 375px;
+  padding-right: 15px;
+}
+
+.titles {
+  height: 115px;
+  text-align: right;
+  pointer-events: none;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0;
+  text-align: right;
+  white-space: nowrap;
+  opacity: 0;
+  color: #333;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  height: 0;
+  padding: 0 1em;
+}
+
+.title.selected {
+  opacity: 1;
+  padding: 1.4em;
+  padding-right: 0;
+  height: 115px;
+  &.short {
+    padding: 1.9em;
+    padding-right: 0;
+  }
+}
+
+.title__sub {
+  font-size: 0.5em;
+  line-height: 1;
+  display: block;
+  margin-top: 0.25em;
+  white-space: nowrap;
+  text-indent: 5px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.title__sub::before,
+.title__sub::after {
+  content: '\2014';
+}
+
+@media screen and (max-height: 42em) {
+  .slideshow {
+    padding-top: 7em;
+  }
+  .titles {
+    right: 4em;
+    left: auto;
+    width: auto;
+    margin: 0;
+  }
+  .title {
+    font-size: 1.35em;
+    bottom: auto;
+    left: auto;
+    width: auto;
+    padding: 1.75em 2em;
+  }
+}
+
+.nav {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  width: 80px;
+  float: right;
+  padding-top: 25px;
+}
+
+.no-preserve3d .nav {
+  display: none;
+}
+
+.nav__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+  cursor: pointer;
+  border: 2px solid #333;
+}
+
+.nav__item::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  background: #333;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.nav__item:hover::after {
+  opacity: 0.2;
+}
+
+.nav__item.selected::after {
+  opacity: 1;
+}
+
+.text-hidden {
+  position: absolute;
+  top: 200%;
+  pointer-events: none;
+  opacity: 0;
+}
+/*
+.title0.selected {
+  color: #246020
+}
+
+.title1.selected {
+  color: #5B000A
+}
+
+.title2.selected {
+  color: #D91500
+}
+
+.title3.selected {
+  color: #006485
+}*/
+
+.radar0.selected,
+.radar0:active,
+.radar0:hover {
+  border-color: #246020;
+  &.nav__item::after {
+    background: #458540;
+  }
+}
+
+.radar1.selected,
+.radar1:active,
+.radar1:hover {
+  border-color: #5B000A;
+  &.nav__item::after {
+    background: #80031e;
+  }
+}
+
+.radar2.selected,
+.radar2:active,
+.radar2:hover {
+  border-color: #D91500;
+  &.nav__item::after {
+    background: #eb4a0a;
+  }
+}
+
+.radar3.selected,
+.radar3:active,
+.radar3:hover {
+  border-color: #006485;
+  &.nav__item::after {
+    background: #0089a5;
+  }
 }
 
 .radar-quadrant-navigation {
@@ -245,9 +465,9 @@ body {
   background-color: #EEE;
 }
 
-.title {
+.main-title {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 5px;
   font-weight: 900;
   font-size: 60px;
   color: #333;
@@ -291,7 +511,7 @@ h3 {
   margin-bottom: 5px;
   padding: 5px 0 5px 10px;
   color: #555 !important;
-  p{
+  p {
     margin-bottom: 5px;
   }
 }

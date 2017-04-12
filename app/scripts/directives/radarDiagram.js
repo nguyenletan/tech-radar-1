@@ -368,6 +368,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         e.stopPropagation();
         scope.groupActive = 'Tools';
         $('.radar-pie').removeClass('selected');
+        $('.title').removeClass('selected');
+        $('.title0').addClass('selected');
         $('.techList').hide();
         $('.techList-' + scope.groupActive.replace(' & ', '')).show();
         $(this).addClass('selected');
@@ -380,6 +382,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         scope.groupActive = 'Techniques & Languages'
 
         $('.radar-pie').removeClass('selected');
+        $('.title').removeClass('selected');
+        $('.title1').addClass('selected');
         $('.techList').hide();
         $('.techList-' + scope.groupActive.replace(' & ', '')).show();
         $(this).addClass('selected');
@@ -390,6 +394,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         e.stopPropagation();
         scope.groupActive = 'Platforms';
         $('.radar-pie').removeClass('selected');
+        $('.title').removeClass('selected');
+        $('.title2').addClass('selected');
         $(this).addClass('selected');
         $('.techList').hide();
         $('.techList-' + scope.groupActive.replace(' & ', '')).show();
@@ -400,6 +406,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         e.stopPropagation();
         scope.groupActive = 'Frameworks & Libraries';
         $('.radar-pie').removeClass('selected');
+        $('.title').removeClass('selected');
+        $('.title3').addClass('selected');
         $(this).addClass('selected');
         $('.techList').hide();
         $('.techList-' + scope.groupActive.replace(' & ', '')).show();
