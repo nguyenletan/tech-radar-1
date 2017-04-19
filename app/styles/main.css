@@ -350,12 +350,10 @@ h3 {
 .notes {
   margin-bottom: 1em;
   font-weight: 700;
-  color: #000;
-  padding-right: 0;
-  margin-right: 0;
+  margin-right: -30px;
 }
 
-/* line 340, main.scss */
+/* line 338, main.scss */
 .note-icon {
   background-color: #EEE;
   width: 20px;
@@ -363,7 +361,7 @@ h3 {
   display: inline-block;
   margin-right: .5em;
 }
-/* line 348, main.scss */
+/* line 346, main.scss */
 .note-icon.circle-note-icon {
   border-radius: 9px;
 }
