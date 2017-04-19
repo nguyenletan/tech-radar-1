@@ -107,6 +107,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         }
 
         var defaultTechRadius = 10;
+        var defaultTechSize = 18;
         var hoverTechRadius = 0;
         var radialBuffer = 10;
 
@@ -240,27 +241,61 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
 
             $techList.each(function (item) {
               var $this = $(this);
-              if($this.attr('rel') === d.label){
+              if ($this.attr('rel') === d.label) {
                 $this.attr('data-technology', d);
 
               }
             });
             return d.label;
           })
-          .on('mouseover', function (d) {
-            d.active = true;
-            console.log(d);
-            scope.redrawTechCircles();
-          })
-          .on('mouseout', function (d) {
-            d.active = false;
-            scope.redrawTechCircles();
-          });
+            .on('mouseover', function (d) {
+              d.active = true;
+              console.log(d);
+              scope.redrawTechCircles();
+            })
+            .on('mouseout', function (d) {
+              d.active = false;
+              scope.redrawTechCircles();
+            });
 
           //draw inner cirlce line
+          console.log(techEnter);
+          techEnter.append("rect")
+            .attr("width", defaultTechSize)
+            .attr("height", defaultTechSize)
+            .datum(function (d) {
+              var parentData = d3.select(this.parentNode.parentNode).datum();
+              var j = 0;
+
+              d.x = d.y = 0;
+              while (!d.x || !d.y || isOverlappingAnotherPoint(d) && j < 1000) {
+                applyRandomXY(parentData.arc, d);
+                j++;
+              }
+
+              return d;
+            })
+            .style("stroke", "white")
+            .style("stroke-width", "0px")
+            .style("fill", "#fff")
+            .style("opacity", "1")
+            .attr("x", function (d) {
+              if (d.isNew !== true) {
+                return 100000;
+              }
+              return d.x - defaultTechSize / 2;
+            }).attr("y", function (d) {
+              if (d.isNew !== true) {
+                return 100000;
+              }
+              return d.y - defaultTechSize / 2;
+          });
+
           techEnter.append("circle").attr("r", defaultTechRadius)
             .datum(function (d) {
-
+              if (d.isNew === true) {
+                return d;
+              }
               var parentData = d3.select(this.parentNode.parentNode).datum();
               var j = 0;
 
@@ -276,9 +311,15 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             .style("fill", "#fff")
             .style("opacity", "1")
             .attr("cx", function (d) {
+              if(d.isNew === true){
+                return 100000;
+              }
               return d.x;
             }).attr("cy", function (d) {
-            return d.y;
+              if(d.isNew === true){
+                return 100000;
+              }
+              return d.y;
           });
           techEnter.append("text")
             .text(function (d) {
@@ -298,7 +339,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
 
         scope.groupActive = radarService.groupActive;
         scope.radarData = radarService.radar.data;
-        scope.$watch('radarData', function () {
+        scope.$watch('radarData', function (e) {
           drawTech();
         }, true);
 
@@ -327,7 +368,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             techs = technologies;
           }
 
-          if(noCallAplly !== true) {
+          if (noCallAplly !== true) {
             scope.$apply();
           }
 
@@ -336,7 +377,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
               return d.active ? 'white' : 'black';
             })
             .transition()
-            .duration(500)
+            .duration(200)
             .tween("text", function (d) {
               var node = this;
               var interpolationFunction = d.active ? interpolateText : reverseInterpolateText;
@@ -347,6 +388,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
               };
             });
 
+
           techs.selectAll("circle").transition()
             .duration(100)
             /*            .attr("r", function (d) {
@@ -355,7 +397,15 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             .style("fill", function (d) {
               return d.active ? 'transparent' : 'white';
             });
-          ;
+
+          techs.selectAll("rect").transition()
+            .duration(100)
+            /*            .attr("r", function (d) {
+             return d.active ? hoverTechRadius : (d.radius ? d.radius : defaultTechRadius);
+             })*/
+            .style("fill", function (d) {
+              return d.active ? 'transparent' : 'white';
+            });
         }
 
         //window.redraw = scope.redrawTechCircles();

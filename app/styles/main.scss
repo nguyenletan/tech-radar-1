@@ -167,7 +167,6 @@ a:focus {
   right: 1em;
 }
 
-
 .radar-quadrant-navigation {
   list-style-type: none !important;
 }
@@ -206,14 +205,13 @@ a:focus {
   background-repeat: no-repeat;
   padding: 28px 0;
   margin: 2px;
-  border: 1px solid #EEE;
   transition: all .3s ease-in-out;
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0 {
   color: #246020;
-  background-color: rgba(134, 183, 130, .1);
-  margin-top: 0;
+  background-color: rgba(134, 183, 130, .2);
+  margin-top: 0px;
   margin-right: 0;
 }
 
@@ -221,16 +219,16 @@ a:focus {
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar0:hover {
   background-color: rgba(134, 183, 130, .9);
-  color: #fafafa;
+  color: #FAFAFA;
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1 {
 
   //border: 2px solid #5b000a;
-  color: #5b000a;
-  background-color: rgba(179, 32, 89, .1);
+  color: #5B000A;
+  background-color: rgba(179, 32, 89, .2);
   padding: 21px 0;
-  margin-bottom: 0;
+  margin-bottom: 0px;
   margin-right: 0;
 }
 
@@ -238,35 +236,35 @@ a:focus {
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar1:hover {
   background-color: rgba(179, 32, 89, .9);
-  color: #fafafa;
+  color: #FAFAFA;
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2 {
   //border: 2px solid #d91500;
-  color: #d91500;
-  background-color: rgba(243, 138, 62, .1);
-  margin-bottom: 0;
+  color: #D91500;
+  background-color: rgba(243, 138, 62, .2);
+  margin-bottom: 0px;
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2.selected,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar2:hover {
   background-color: rgba(243, 138, 62, .9);
-  color: #fafafa;
+  color: #FAFAFA;
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3 {
   padding: 21px;
   color: #006485;
-  background-color: rgba(30, 188, 205, .1);
-  margin-top: 0;
+  background-color: rgba(30, 188, 205, .2);
+  margin-top: 0px;
 }
 
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3.selected,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3:active,
 .radar-quadrant-navigation .radar-quadrant-navigation__radar-quadrants .radar-quadrant-navigation__quadrant a.radar3:hover {
   background-color: rgba(30, 188, 205, .9);
-  color: #fafafa;
+  color: #FAFAFA;
 }
 
 .dot {
@@ -328,6 +326,29 @@ h3 {
   color: #555 !important;
   p {
     margin-bottom: 5px;
+  }
+}
+
+.notes {
+  margin-bottom: 1em;
+  font-weight: 700;
+  color: #000;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.note-icon {
+  background-color: #EEE;
+  //border: 1px solid #eee;
+
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: .5em;
+  &.circle-note-icon {
+    border-radius: 9px;
+  }
+  &.square-note-icon {
   }
 }
 
