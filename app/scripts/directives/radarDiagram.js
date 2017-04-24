@@ -1,4 +1,6 @@
 'use strict';
+window.isHover = false;
+
 
 angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService', function ($log, radarService) {
   return {
@@ -7,6 +9,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
     replace: true,
     link: function (scope, element, attrs) {
       //console.log(scope);
+
+
       function renderChart(pieNumber) {
 
         //console.log('begin render');
@@ -192,6 +196,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           })
           .on('mouseout', function (d) {
             d.active = false;
+
             scope.redrawTechCircles();
           });
 
@@ -250,16 +255,16 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           })
             .on('mouseover', function (d) {
               d.active = true;
-              console.log(d);
+              window.isHover = true;
               scope.redrawTechCircles();
             })
             .on('mouseout', function (d) {
               d.active = false;
+              window.isHover = false;
               scope.redrawTechCircles();
             });
 
           //draw inner cirlce line
-          console.log(techEnter);
           techEnter.append("rect")
             .attr("width", defaultTechSize)
             .attr("height", defaultTechSize)
@@ -275,20 +280,22 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
 
               return d;
             })
-            .style("stroke", "white")
+            .style("stroke", "#333")
             .style("stroke-width", "0px")
             .style("fill", "#fff")
             .style("opacity", "1")
+            .attr("rx", 3)
+            .attr("ry", 3)
             .attr("x", function (d) {
               if (d.isNew !== true) {
                 return 100000;
               }
               return d.x - defaultTechSize / 2;
             }).attr("y", function (d) {
-              if (d.isNew !== true) {
-                return 100000;
-              }
-              return d.y - defaultTechSize / 2;
+            if (d.isNew !== true) {
+              return 100000;
+            }
+            return d.y - defaultTechSize / 2;
           });
 
           techEnter.append("circle").attr("r", defaultTechRadius)
@@ -306,20 +313,20 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
               }
               return d;
             })
-            .style("stroke", "white")
+            .style("stroke", "#333")
             .style("stroke-width", "0px")
             .style("fill", "#fff")
             .style("opacity", "1")
             .attr("cx", function (d) {
-              if(d.isNew === true){
+              if (d.isNew === true) {
                 return 100000;
               }
               return d.x;
             }).attr("cy", function (d) {
-              if(d.isNew === true){
-                return 100000;
-              }
-              return d.y;
+            if (d.isNew === true) {
+              return 100000;
+            }
+            return d.y;
           });
           techEnter.append("text")
             .text(function (d) {
@@ -372,9 +379,45 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             scope.$apply();
           }
 
+          techs.selectAll("circle").transition()
+            .duration(100)
+            /*            .attr("r", function (d) {
+             return d.active ? hoverTechRadius : (d.radius ? d.radius : defaultTechRadius);
+             })*/
+/*            .style("stroke-width", function (d) {
+              //return d.active ? '0px' : '1px';
+              return window.isHover ? '0px' : '0px';
+            })*/
+            .style("fill", function (d) {
+              //return d.active ? 'transparent' : 'white';
+              //return window.isHover ? '#ccc' : 'white';
+              return window.isHover ? d.active ? 'transparent' : '#ddd' : '#fff';
+            });
+
+          techs.selectAll("rect").transition()
+            .duration(100)
+            /*.style("stroke-width", function (d) {
+              //return d.active ? '0px' : '1px';
+              return window.isHover ? '0px' : '0px';
+
+            })*/
+            .style("fill", function (d) {
+              //return d.active ? 'transparent' : 'white';
+              return window.isHover ? d.active ? 'transparent' : '#ddd' : '#fff';
+              //return window.isHover ? 'transparent' : 'white';
+
+            });
+
           techs.selectAll("text")
             .style('fill', function (d) {
-              return d.active ? 'white' : 'black';
+              //return d.active ? '#fafafa' : '#000';
+              if(window.isHover){
+                if(d.active){
+                  return '#FFF';
+                }
+                return '#aaa';
+              }
+              return '#000';
             })
             .transition()
             .duration(200)
@@ -384,27 +427,9 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
               var i = interpolationFunction(d.label, Math.min(this.textContent.length, truncatedLabelLength), d.index);
               return function (t) {
                 node.textContent = d.active ? i(t) : i(t) + 1;
+
                 node.fill = 'white';//d.active ? 'white' : 'black';
               };
-            });
-
-
-          techs.selectAll("circle").transition()
-            .duration(100)
-            /*            .attr("r", function (d) {
-             return d.active ? hoverTechRadius : (d.radius ? d.radius : defaultTechRadius);
-             })*/
-            .style("fill", function (d) {
-              return d.active ? 'transparent' : 'white';
-            });
-
-          techs.selectAll("rect").transition()
-            .duration(100)
-            /*            .attr("r", function (d) {
-             return d.active ? hoverTechRadius : (d.radius ? d.radius : defaultTechRadius);
-             })*/
-            .style("fill", function (d) {
-              return d.active ? 'transparent' : 'white';
             });
         }
 
