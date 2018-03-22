@@ -21,7 +21,6 @@
     "grunt-usemin": "latest",
     "grunt-svgmin": "latest",
     "grunt-rev": "latest",
-
     "grunt-open": "latest",
     "grunt-concurrent": "latest",
     "matchdep": "latest",
