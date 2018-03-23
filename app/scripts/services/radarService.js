@@ -3,6 +3,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
 
     var LOCAL_STORAGE_ID = 'sadc.technologyRadarData';
     categoryName = 'Frameworks & Libraries';
+
     function Radar(data) {
       //this.data = defaultData;
 
@@ -55,7 +56,13 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                 {"label": "PHP", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "Java", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "SQL", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-                {"label": "Responsive web design", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {
+                  "label": "Responsive web design",
+                  "isNew": false,
+                  "numberOfSE": 180,
+                  "numberOfSSE": 72,
+                  "numberOfPSE": 3
+                },
                 {"label": "OOP", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "Go", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "Swift/Objective C", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3}
@@ -63,7 +70,13 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
             },
             {
               label: 'Platforms',
-              technologies: [{"label": "Windows", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+              technologies: [{
+                "label": "Windows",
+                "isNew": false,
+                "numberOfSE": 180,
+                "numberOfSSE": 72,
+                "numberOfPSE": 3
+              },
                 {"label": "MS Azure", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "Android", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "IOS", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
@@ -161,7 +174,13 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
                 {"label": "Drupal", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "Magento", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
                 {"label": "Moodle", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-                {"label": "Amazon Web Services", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {
+                  "label": "Amazon Web Services",
+                  "isNew": false,
+                  "numberOfSE": 180,
+                  "numberOfSSE": 72,
+                  "numberOfPSE": 3
+                },
                 {"label": "Xamarin", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
               ]
             },
@@ -195,15 +214,15 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
           categories: [
             {
               label: 'Tools', technologies: [
-              {
-                "label": "Eclipse Virgo (OSGI Server)",
-                "isNew": false,
-                "numberOfSE": 180,
-                "numberOfSSE": 72,
-                "numberOfPSE": 3
-              },
-              {"label": "Spark", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3}
-            ]
+                {
+                  "label": "Eclipse Virgo (OSGI Server)",
+                  "isNew": false,
+                  "numberOfSE": 180,
+                  "numberOfSSE": 72,
+                  "numberOfPSE": 3
+                },
+                {"label": "Spark", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3}
+              ]
             },
             {
               label: 'Techniques & Languages',
@@ -215,34 +234,119 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
             },
             {
               label: 'Platforms', technologies: [
-              {"label": "Universal Windows App", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": ".Net Core", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Spring Cloud", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Blockchain", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "IoT", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Big Data", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "JAMstack", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-            ]
+                {
+                  "label": "Universal Windows App",
+                  "isNew": false,
+                  "numberOfSE": 180,
+                  "numberOfSSE": 72,
+                  "numberOfPSE": 3
+                },
+                {"label": ".Net Core", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "Spring Cloud", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "Blockchain", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "IoT", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "Big Data", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "JAMstack", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+              ]
             },
             {
               label: 'Frameworks & Libraries', technologies: [
-              {"label": "Entity Framework Core", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "ReactJs", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "React Native", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "ASP.NET Core", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Angular4", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Lift", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "VueJs", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Machine Learning", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
-              {"label": "Tensorflow", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3}
-            ]
+                {
+                  "label": "Entity Framework Core",
+                  "isNew": true,
+                  "numberOfSE": 180,
+                  "numberOfSSE": 72,
+                  "numberOfPSE": 3
+                },
+                {"label": "ReactJs", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "React Native", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "ASP.NET Core", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "Angular4", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "Lift", "isNew": false, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "VueJs", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "Machine Learning", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3},
+                {"label": "Tensorflow", "isNew": true, "numberOfSE": 180, "numberOfSSE": 72, "numberOfPSE": 3}
+              ]
             },
           ]
         },
 
       ];
 
+      this.techData = [
+        {
+          "label": "Core", categories: []
+        },
+        {
+          "label": "Non-Core", categories: []
+        },
+        {
+          "label": "Adopting", categories: []
+        },
+      ];
+
+
+      getData(this.techData);
+
+
       fillIndex(this.data);
+    }
+
+    function getData(techData) {
+      fetch('http://localhost:5804/api/Values', {
+        method: 'get',
+        headers: {
+          "Content-Type": "text/xml"
+        },
+      }).then(function (resp) {
+        return resp.json()
+      }).then(function (data) {
+        //techData = data;
+        //techData = _.uniq(data);
+        mappingData(data, techData);
+        //console.log(data);
+      })
+    }
+
+    function mappingData(serverData, chartData) {
+      //techData.map(d=>d)
+      var temp = _.groupBy(serverData, function (d) {
+        return d.maturityLevels;
+      });
+
+      var coreList = _.groupBy(temp.Core, function (c) {
+        return c.nashTechCategory;
+      });
+
+      var nonCoreList = _.groupBy(temp.NonCore, function (c) {
+        return c.nashTechCategory;
+      });
+
+      var adoptingList = _.groupBy(temp.Adopting, function (c) {
+        return c.nashTechCategory;
+      });
+
+      /* console.log(coreList);
+       console.log(nonCoreList);
+       console.log(adoptingList);*/
+
+
+      chartData[0].categories = chartData[1].categories = chartData[2].categories = [
+        {label: "Frameworks & Libraries", technologies: []},
+        {label: "Tools", technologies: []},
+        {label: "Platforms", technologies: []},
+        {label: "Techniques & Languages", technologies: []}
+      ];
+
+      chartData[0].categories[0].technologies = Object.values(coreList);
+
+
+      //chartData[1].categories = nonCoreList;
+      //chartData[2].categories = adoptingList;
+      //console.log(temp);
+      console.log(chartData[0]);
+      //temp2 = temp;
+      //console.log(techData);
     }
 
     function fillIndex(data) {
@@ -302,7 +406,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       return _.pluck(radar.data, 'label');
     }
 
-    //getTechListByCategoryName('Techniques & Languages');
+//getTechListByCategoryName('Techniques & Languages');
 
     var o = {
       radar: radar,
@@ -311,8 +415,9 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       groupActive: 'Frameworks & Libraries',
       techList: getTechListByCategoryName()
     };
-    //console.log(o);
+//console.log(o);
     return o;
   }
 
-]);
+])
+;
